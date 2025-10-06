@@ -1,12 +1,16 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	// https://svelte.dev/docs/svelte/svelte-transition
 	import { slide } from 'svelte/transition';
 	// https://svelte.dev/playground/easing
 	import { expoOut } from 'svelte/easing';
 
 	let showTitle = $state(false);
-	onMount(() => setTimeout(() => (showTitle = true), 1));
+	let backImageLoaded = $state(false);
+	let frontImageLoaded = $state(false);
+
+	$effect(() => {
+		if (backImageLoaded && frontImageLoaded) showTitle = true;
+	});
 </script>
 
 <div class="relative h-screen overflow-hidden">
@@ -15,6 +19,7 @@
 		src="/backgrounds/mountain-with-sky.webp"
 		alt="Mountain background with sky"
 		class="absolute h-full w-full object-cover"
+		onload={() => (backImageLoaded = true)}
 	/>
 	{#if showTitle}
 		<h1
@@ -29,6 +34,7 @@
 		src="/backgrounds/mountain.webp"
 		alt="Mountain background with no sky"
 		class="absolute z-10 h-full w-full object-cover"
+		onload={() => (frontImageLoaded = true)}
 	/>
 </div>
 
