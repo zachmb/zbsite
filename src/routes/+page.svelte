@@ -10,6 +10,7 @@
 </script>
 
 <div class="relative h-screen overflow-hidden">
+	<!-- https://unsplash.com/photos/snow-mountain-under-stars-phIFdC6lA4E -->
 	<img
 		src="/backgrounds/mountain-with-sky.webp"
 		alt="Mountain background with sky"
@@ -23,6 +24,7 @@
 			MadKarma
 		</h1>
 	{/if}
+	<!-- https://unsplash.com/photos/snow-mountain-under-stars-phIFdC6lA4E -->
 	<img
 		src="/backgrounds/mountain.webp"
 		alt="Mountain background with no sky"
