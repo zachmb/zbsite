@@ -25,8 +25,13 @@
 
 <div class="relative h-screen overflow-hidden">
 	{#if showContent && showBars}
-		<div class="loading-bar-container top-4 left-4">
-			<div class="loading-bar"></div>
+		<!-- Top-left horizontal bar -->
+		<div class="loading-bar-container-horizontal top-4 left-4">
+			<div class="loading-bar loading-bar-horizontal"></div>
+		</div>
+		<!-- Top-left vertical bar -->
+		<div class="loading-bar-container-vertical top-4 left-4">
+			<div class="loading-bar loading-bar-vertical"></div>
 		</div>
 	{/if}
 
@@ -56,8 +61,13 @@
 	/>
 
 	{#if showContent && showBars}
-		<div class="loading-bar-container right-4 bottom-4">
-			<div class="loading-bar loading-bar-reverse"></div>
+		<!-- Bottom-right vertical bar -->
+		<div class="loading-bar-container-vertical right-4 bottom-4">
+			<div class="loading-bar loading-bar-vertical-reverse"></div>
+		</div>
+		<!-- Bottom-right horizontal bar -->
+		<div class="loading-bar-container-horizontal right-4 bottom-4">
+			<div class="loading-bar loading-bar-horizontal-reverse"></div>
 		</div>
 	{/if}
 </div>
@@ -76,11 +86,20 @@
 		@apply object-cover;
 	}
 
-	.loading-bar-container {
+	.loading-bar-container-horizontal {
 		@apply absolute;
 		@apply z-20;
 		@apply h-1.5;
-		@apply w-1/3;
+		@apply w-1/2 lg:w-1/3;
+		@apply overflow-hidden;
+		@apply rounded-full;
+	}
+
+	.loading-bar-container-vertical {
+		@apply absolute;
+		@apply z-20;
+		@apply w-1.5;
+		@apply h-1/2 lg:h-1/3;
 		@apply overflow-hidden;
 		@apply rounded-full;
 	}
@@ -91,39 +110,158 @@
 		@apply bg-white;
 		@apply rounded-full;
 		@apply opacity-15;
-		transform: translateX(-200%);
-		animation-duration: 4s;
+		animation-duration: 8s;
 		animation-timing-function: ease-in-out;
 		animation-iteration-count: infinite;
-		animation-name: slide;
 	}
 
-	@keyframes slide {
-		0% {
-			transform: translateX(-50%);
+	.loading-bar-horizontal {
+		@apply opacity-15;
+		transform: translateX(-100%) translateY(0);
+		animation-name: slide-horizontal-tl;
+	}
+
+	@keyframes slide-horizontal-tl {
+		0%,
+		23% {
+			transform: translateX(-100%) translateY(0);
 		}
-		50% {
-			transform: translateX(150%);
+		25% {
+			transform: translateX(-100%) translateY(0);
+		}
+		37.5% {
+			transform: translateX(100%) translateY(0);
+		}
+		48% {
+			transform: translateX(-100%) translateY(0);
+		}
+		50%,
+		73% {
+			transform: translateX(-100%) translateY(0);
+		}
+		75% {
+			transform: translateX(-100%) translateY(0);
+		}
+		87.5% {
+			transform: translateX(100%) translateY(0);
+		}
+		98% {
+			transform: translateX(-100%) translateY(0);
 		}
 		100% {
-			transform: translateX(-50%);
+			transform: translateX(-100%) translateY(0);
 		}
 	}
 
-	.loading-bar-reverse {
-		transform: translateX(200%);
-		animation-name: slide-reverse;
+	.loading-bar-vertical {
+		@apply h-1/2;
+		@apply w-full;
+		@apply opacity-15;
+		transform: translateX(0) translateY(-100%);
+		animation-name: slide-vertical-tl;
 	}
 
-	@keyframes slide-reverse {
+	@keyframes slide-vertical-tl {
 		0% {
-			transform: translateX(150%);
+			transform: translateX(0) translateY(-100%);
+		}
+		12.5% {
+			transform: translateX(0) translateY(100%);
+		}
+		25% {
+			transform: translateX(0) translateY(-100%);
+		}
+		25.01%,
+		47% {
+			transform: translateX(0) translateY(-100%);
 		}
 		50% {
-			transform: translateX(-50%);
+			transform: translateX(0) translateY(-100%);
+		}
+		62.5% {
+			transform: translateX(0) translateY(100%);
+		}
+		75% {
+			transform: translateX(0) translateY(-100%);
+		}
+		75.01%,
+		100% {
+			transform: translateX(0) translateY(-100%);
+		}
+	}
+
+	.loading-bar-vertical-reverse {
+		@apply h-1/2;
+		@apply w-full;
+		@apply opacity-15;
+		transform: translateX(0) translateY(200%);
+		animation-name: slide-vertical-br;
+	}
+
+	@keyframes slide-vertical-br {
+		0% {
+			transform: translateX(0) translateY(200%);
+		}
+		12.5% {
+			transform: translateX(0) translateY(0%);
+		}
+		25% {
+			transform: translateX(0) translateY(200%);
+		}
+		25.01%,
+		47% {
+			transform: translateX(0) translateY(200%);
+		}
+		50% {
+			transform: translateX(0) translateY(200%);
+		}
+		62.5% {
+			transform: translateX(0) translateY(0%);
+		}
+		75% {
+			transform: translateX(0) translateY(200%);
+		}
+		75.01%,
+		100% {
+			transform: translateX(0) translateY(200%);
+		}
+	}
+
+	.loading-bar-horizontal-reverse {
+		@apply opacity-15;
+		transform: translateX(200%) translateY(0);
+		animation-name: slide-horizontal-br;
+	}
+
+	@keyframes slide-horizontal-br {
+		0%,
+		23% {
+			transform: translateX(200%) translateY(0);
+		}
+		25% {
+			transform: translateX(200%) translateY(0);
+		}
+		37.5% {
+			transform: translateX(0%) translateY(0);
+		}
+		48% {
+			transform: translateX(200%) translateY(0);
+		}
+		50%,
+		73% {
+			transform: translateX(200%) translateY(0);
+		}
+		75% {
+			transform: translateX(200%) translateY(0);
+		}
+		87.5% {
+			transform: translateX(0%) translateY(0);
+		}
+		98% {
+			transform: translateX(200%) translateY(0);
 		}
 		100% {
-			transform: translateX(150%);
+			transform: translateX(200%) translateY(0);
 		}
 	}
 </style>
