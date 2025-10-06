@@ -23,10 +23,10 @@
 	/>
 	{#if showTitle}
 		<h1
-			class="space-grotesk-600 absolute top-[46.5%] left-1/2 -translate-x-1/2 -translate-y-1/2 transform px-4 whitespace-nowrap text-white md:top-[45%] lg:top-[44%]"
+			class="space-grotesk-700 absolute top-[46.5%] left-1/2 -translate-x-1/2 -translate-y-1/2 transform px-4 whitespace-nowrap text-white mix-blend-overlay md:top-[45%] lg:top-[44%]"
 			in:slide={{ duration: 1000, easing: expoOut, axis: 'y' }}
 		>
-			MadKarma
+			MADKARMA
 		</h1>
 	{/if}
 	<!-- https://unsplash.com/photos/snow-mountain-under-stars-phIFdC6lA4E -->
