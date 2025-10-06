@@ -9,8 +9,15 @@
 		titleInDelay?: number;
 		titleInDuration?: number;
 		showBars?: boolean;
+		barsAnimationDurationMs?: number;
 	};
-	let { title, titleInDelay = 750, titleInDuration = 1100, showBars = true }: Props = $props();
+	let {
+		title,
+		titleInDelay = 750,
+		titleInDuration = 1100,
+		showBars = true,
+		barsAnimationDurationMs = 8000
+	}: Props = $props();
 
 	title = title.trim();
 
@@ -23,7 +30,10 @@
 	});
 </script>
 
-<div class="relative h-screen overflow-hidden">
+<div
+	class="relative h-screen overflow-hidden"
+	style="--bars-duration: {barsAnimationDurationMs}ms;"
+>
 	{#if showContent && showBars}
 		<!-- Top-left horizontal bar -->
 		<div class="loading-bar-container-horizontal top-4 left-4">
@@ -110,7 +120,7 @@
 		@apply bg-white;
 		@apply rounded-full;
 		@apply opacity-15;
-		animation-duration: 8s;
+		animation-duration: var(--bars-duration);
 		animation-timing-function: ease-in-out;
 		animation-iteration-count: infinite;
 	}
