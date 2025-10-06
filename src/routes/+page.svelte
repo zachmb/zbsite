@@ -15,7 +15,7 @@
 	/>
 	{#if showTitle}
 		<h1
-			class="space-grotesk-600 absolute top-[43%] left-1/2 -translate-x-1/2 -translate-y-[43%] transform text-[10rem] text-white"
+			class="space-grotesk-600 absolute top-[43%] left-1/2 -translate-x-1/2 -translate-y-[43%] transform px-4 whitespace-nowrap text-white"
 			in:slide={{ duration: 1000, easing: expoOut, axis: 'y' }}
 		>
 			MadKarma
@@ -27,3 +27,9 @@
 		class="absolute z-10 h-full w-full object-cover"
 	/>
 </div>
+
+<style>
+	h1 {
+		font-size: clamp(1rem, 15vw, 10rem);
+	}
+</style>
