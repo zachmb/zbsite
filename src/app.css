@@ -1,1 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 @import 'tailwindcss';
+
+@utility space-grotesk-* {
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: --value("300", "400", "500", "600", "700");
+    font-style: normal;
+}
+
+* {
+    @apply space-grotesk-400;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
