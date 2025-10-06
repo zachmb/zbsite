@@ -1,4 +1,4 @@
-<div class="relative h-screen">
+<div class="relative h-screen overflow-hidden">
 	<img
 		src="/backgrounds/mountain-with-sky.webp"
 		alt="Mountain background with sky"
