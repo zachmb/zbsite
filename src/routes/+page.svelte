@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	// https://svelte.dev/docs/svelte/svelte-transition
 	import { slide } from 'svelte/transition';
+	// https://svelte.dev/playground/easing
 	import { expoOut } from 'svelte/easing';
 
 	let showTitle = $state(false);
