@@ -29,7 +29,7 @@ img {
     user-select: none;
 }
 
-html.minecraft * {
+body.minecraft * {
     font-family: 'Minecraft', monospace;
     cursor: url('/cursors/sword.cur'), auto;
 }
