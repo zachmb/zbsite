@@ -2,36 +2,36 @@
 @import 'tailwindcss';
 
 @font-face {
-    font-family: 'Minecraft';
-    src: url('/fonts/Minecraft.ttf') format('truetype');
+	font-family: 'Minecraft';
+	src: url('/fonts/Minecraft.ttf') format('truetype');
 }
 
 @utility space-grotesk-* {
-    font-family: "Space Grotesk", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: --value("300", "400", "500", "600", "700");
-    font-style: normal;
+	font-family: 'Space Grotesk', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: --value('300', '400', '500', '600', '700');
+	font-style: normal;
 }
 
 * {
-    @apply space-grotesk-400;
-    margin: 0;
-    padding: 0;
-    outline: none;
-    box-sizing: border-box;
+	@apply space-grotesk-400;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	box-sizing: border-box;
 }
 
 img {
-    pointer-events: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+	pointer-events: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 body.minecraft * {
-    font-family: 'Minecraft', monospace;
-    cursor: url('/cursors/sword.cur'), auto;
+	font-family: 'Minecraft', monospace;
+	cursor: url('/cursors/sword.cur'), auto;
 }
 
 /* .text-glitch .char.changing {} */

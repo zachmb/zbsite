@@ -5,6 +5,7 @@
 	import { type Snippet, onMount } from 'svelte';
 	import { generateRandomSquarePng } from '$utils';
 	import { showEasterEgg } from '$lib/stores';
+	import FontAwesomeHead from '$components/fontawesome/Head.svelte';
 
 	type Props = { children: Snippet };
 	let { children }: Props = $props();
@@ -23,6 +24,8 @@
 	<title>{page.url.pathname}</title>
 	<link rel="icon" type="image/png" href={iconUrl} />
 </svelte:head>
+
+<FontAwesomeHead />
 
 <svelte:body
 	{@attach (body) => {

@@ -3,7 +3,6 @@ import * as z from 'zod';
 const RepositorySchema = z.object({
 	archived: z.boolean(),
 	clone_url: z.url(),
-	collaborators_url: z.url(),
 	description: z.string().nullable(),
 	forks_count: z.number(),
 	full_name: z.string(),
@@ -32,15 +31,15 @@ const UserSchema = z.object({
 export type User = z.infer<typeof UserSchema>;
 
 export default {
-	user: (username: string) => ({
+	user: (username: string, fetchFn: typeof fetch) => ({
 		async repos(init?: RequestInit) {
 			const url = `https://api.github.com/users/${username}/repos`;
-			const res = await fetch(url, init).then((r) => r.json());
+			const res = await fetchFn(url, init).then((r) => r.json());
 			return RepositorySchema.array().parse(res);
 		},
 		async info(init?: RequestInit) {
 			const url = `https://api.github.com/users/${username}`;
-			const res = await fetch(url, init).then((r) => r.json());
+			const res = await fetchFn(url, init).then((r) => r.json());
 			return UserSchema.parse(res);
 		}
 	})

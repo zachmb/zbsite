@@ -1,8 +1,10 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import Landing from '$components/Landing.svelte';
+	import RepoCard from './RepoCard.svelte';
 
 	let { data }: PageProps = $props();
 </script>
 
-<Landing title="MADKARMA" />
+{#each data.repos as repo}
+	<RepoCard repository={repo} />
+{/each}
