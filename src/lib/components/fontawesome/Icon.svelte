@@ -41,4 +41,4 @@
 	if (name.startsWith('fa-')) name = name.slice(3);
 </script>
 
-<i class={`fa-${pack} fa-${style} fa-${name}`}></i>
+<i class={`fa-${pack} ${style ? `fa-${style}` : ''} fa-${name}`}></i>
