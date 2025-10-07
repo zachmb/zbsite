@@ -3,6 +3,6 @@ import { PUBLIC_REPO_OWNER } from '$env/static/public';
 import github from '$utils/github';
 
 export const load: PageLoad = async ({ fetch }) => {
-	const repos = await github.user(PUBLIC_REPO_OWNER, fetch).repos();
+	const repos = await github.user(PUBLIC_REPO_OWNER).repos(fetch);
 	return { repos };
 };

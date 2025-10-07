@@ -31,13 +31,13 @@ const UserSchema = z.object({
 export type User = z.infer<typeof UserSchema>;
 
 export default {
-	user: (username: string, fetchFn: typeof fetch) => ({
-		async repos(init?: RequestInit) {
+	user: (username: string) => ({
+		async repos(fetchFn: typeof fetch, init?: RequestInit) {
 			const url = `https://api.github.com/users/${username}/repos`;
 			const res = await fetchFn(url, init).then((r) => r.json());
 			return RepositorySchema.array().parse(res);
 		},
-		async info(init?: RequestInit) {
+		async info(fetchFn: typeof fetch, init?: RequestInit) {
 			const url = `https://api.github.com/users/${username}`;
 			const res = await fetchFn(url, init).then((r) => r.json());
 			return UserSchema.parse(res);
