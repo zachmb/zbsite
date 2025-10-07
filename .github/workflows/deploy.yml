@@ -22,7 +22,7 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          path: '**/node_modules'
+          path: "**/node_modules"
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
           restore-keys: ${{ runner.os }}-bun-
 
@@ -37,6 +37,8 @@ jobs:
       - name: Build
         id: build
         run: bun run build
+        env:
+          PUBLIC_REPO_OWNER: ${{ github.repository_owner }}
 
       - name: Upload static files
         id: deployment
