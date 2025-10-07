@@ -1,23 +1,42 @@
 <script lang="ts">
-	type Props = {
-		pack:
-			| 'brands'
-			| 'chisel'
-			| 'classic'
-			| 'duotone'
-			| 'etch'
-			| 'jelly'
-			| 'notdog'
-			| 'sharp'
-			| 'sharp-duotone'
-			| 'slab'
-			| 'thumbprint'
-			| 'utility'
-			| 'whiteboard';
-		style: 'solid' | 'regular' | 'light' | 'thin' | 'semibold';
+	type IconPackStyles = {
+		brands: never;
+		chisel: 'regular';
+		classic: 'solid' | 'regular' | 'light' | 'thin';
+		duotone: 'solid' | 'regular' | 'light' | 'thin';
+		etch: 'solid';
+		jelly: 'regular';
+		'jelly-duo': 'regular';
+		'jelly-fill': 'regular';
+		notdog: 'solid';
+		'notdog-duo': 'solid';
+		sharp: 'solid' | 'regular' | 'light' | 'thin';
+		'sharp-duotone': 'solid' | 'regular' | 'light' | 'thin';
+		slab: 'regular';
+		'slab-press': 'regular';
+		thumbprint: 'light';
+		utility: 'semibold';
+		'utility-duo': 'semibold';
+		'utility-fill': 'semibold';
+		whiteboard: 'semibold';
+	};
+
+	type IconPack = keyof IconPackStyles;
+
+	type Props<P extends IconPack> = {
+		pack: P;
+		style: IconPackStyles[P];
 		name: string;
 	};
-	let { pack, style, name }: Props = $props();
+
+	type BrandsProps = {
+		pack: 'brands';
+		style?: never;
+		name: string;
+	};
+
+	let { pack, style, name }: Props<IconPack> | BrandsProps = $props();
+
 	if (name.startsWith('fa-')) name = name.slice(3);
 </script>
 
