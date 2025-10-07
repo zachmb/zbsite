@@ -37,6 +37,7 @@
 
 	let { pack, style, name }: Props<IconPack> | BrandsProps = $props();
 
+	name = name.trim();
 	if (name.startsWith('fa-')) name = name.slice(3);
 </script>
 
