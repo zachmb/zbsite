@@ -36,7 +36,7 @@
 <svelte:window bind:scrollY />
 
 <div
-	class="relative h-screen overflow-hidden"
+	class="relative h-[105vh] overflow-hidden"
 	style="--bars-duration: {barsAnimationDurationMs}ms;"
 >
 	{#if showContent && showBars}
@@ -52,7 +52,7 @@
 	<img
 		src="/backgrounds/mountain-with-sky.webp"
 		alt="Mountain background with sky"
-		class="image"
+		class="image fade-away"
 		onload={() => (backImageLoaded = true)}
 	/>
 
@@ -70,15 +70,15 @@
 	<img
 		src="/backgrounds/mountain.webp"
 		alt="Mountain background with no sky"
-		class="image z-10"
+		class="image fade-away z-10"
 		onload={() => (frontImageLoaded = true)}
 	/>
 
 	{#if showContent && showBars}
-		<div class="loading-bar-container-vertical right-4 bottom-4">
+		<div class="loading-bar-container-vertical right-4 bottom-[calc(1rem+5vh)]">
 			<div class="loading-bar loading-bar-vertical-reverse"></div>
 		</div>
-		<div class="loading-bar-container-horizontal right-4 bottom-4">
+		<div class="loading-bar-container-horizontal right-4 bottom-[calc(1rem+5vh)]">
 			<div class="loading-bar loading-bar-horizontal-reverse"></div>
 		</div>
 	{/if}
@@ -96,6 +96,11 @@
 		@apply h-full;
 		@apply w-full;
 		@apply object-cover;
+	}
+
+	.fade-away {
+		mask-image: linear-gradient(to bottom, black calc(100% - 5vh), transparent 100%);
+		-webkit-mask-image: linear-gradient(to bottom, black calc(100% - 5vh), transparent 100%);
 	}
 
 	.loading-bar-container-horizontal {
