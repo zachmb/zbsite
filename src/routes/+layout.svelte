@@ -7,6 +7,7 @@
 	import { showEasterEgg, theme } from '$stores';
 	import { systemPrefersDark } from '$stores/media-queries';
 	import FontAwesomeHead from '$components/fontawesome/Head.svelte';
+	import ThemeSwitcher from '$components/ThemeSwitcher.svelte';
 
 	type Props = { children: Snippet };
 	let { children }: Props = $props();
@@ -25,7 +26,7 @@
 		iconUrl = generateRandomSquarePng(16);
 
 		Object.defineProperty(window, '__whatCouldThisDo', {
-			get: () => ($showEasterEgg = !$showEasterEgg)
+			get: () => showEasterEgg.set(!$showEasterEgg)
 		});
 	});
 </script>
@@ -46,5 +47,9 @@
 		body.classList.add(effectiveTheme);
 	}}
 />
+
+<div class="fixed top-4 right-4 z-50">
+	<ThemeSwitcher />
+</div>
 
 {@render children()}
