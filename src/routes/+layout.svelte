@@ -4,13 +4,23 @@
 	import { page } from '$app/state';
 	import { type Snippet, onMount } from 'svelte';
 	import { generateRandomSquarePng } from '$utils';
-	import { showEasterEgg } from '$lib/stores';
+	import { showEasterEgg, theme } from '$stores';
+	import { systemPrefersDark } from '$stores/media-queries';
 	import FontAwesomeHead from '$components/fontawesome/Head.svelte';
 
 	type Props = { children: Snippet };
 	let { children }: Props = $props();
 
 	let iconUrl = $state('');
+
+	let effectiveTheme = $derived(
+		$theme === 'auto' ? ($systemPrefersDark ? 'dark' : 'light') : $theme
+	);
+
+	$effect(() => {
+		import(`../css/${effectiveTheme}.css`);
+	});
+
 	onMount(() => {
 		iconUrl = generateRandomSquarePng(16);
 
@@ -31,6 +41,9 @@
 	{@attach (body) => {
 		if ($showEasterEgg) body.classList.add('minecraft');
 		else body.classList.remove('minecraft');
+
+		body.classList.remove('light', 'dark');
+		body.classList.add(effectiveTheme);
 	}}
 />
 
