@@ -21,6 +21,20 @@
 	font-style: normal;
 }
 
+@utility glass-* {
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(calc(--value(integer) * 1px));
+		z-index: -1;
+	}
+}
+
 @custom-variant standalone {
 	@media (display-mode: standalone) {
 		@slot;
@@ -29,10 +43,13 @@
 
 * {
 	@apply space-grotesk-400;
-	margin: 0;
-	padding: 0;
 	outline: none;
 	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
 }
 
 img, .unselectable {
