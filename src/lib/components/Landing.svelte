@@ -40,11 +40,9 @@
 	style="--bars-duration: {barsAnimationDurationMs}ms;"
 >
 	{#if showContent && showBars}
-		<!-- Top-left horizontal bar -->
 		<div class="loading-bar-container-horizontal top-4 left-4">
 			<div class="loading-bar loading-bar-horizontal"></div>
 		</div>
-		<!-- Top-left vertical bar -->
 		<div class="loading-bar-container-vertical top-4 left-4">
 			<div class="loading-bar loading-bar-vertical"></div>
 		</div>
@@ -77,11 +75,9 @@
 	/>
 
 	{#if showContent && showBars}
-		<!-- Bottom-right vertical bar -->
 		<div class="loading-bar-container-vertical right-4 bottom-4">
 			<div class="loading-bar loading-bar-vertical-reverse"></div>
 		</div>
-		<!-- Bottom-right horizontal bar -->
 		<div class="loading-bar-container-horizontal right-4 bottom-4">
 			<div class="loading-bar loading-bar-horizontal-reverse"></div>
 		</div>
