@@ -10,13 +10,15 @@
 		titleInDuration?: number;
 		showBars?: boolean;
 		barsAnimationDurationMs?: number;
+		parallaxFactor?: number;
 	};
 	let {
 		title,
 		titleInDelay = 750,
 		titleInDuration = 1100,
 		showBars = true,
-		barsAnimationDurationMs = 8000
+		barsAnimationDurationMs = 8000,
+		parallaxFactor = 0.35
 	}: Props = $props();
 
 	title = title.trim();
@@ -24,11 +26,14 @@
 	let showContent = $state(false);
 	let backImageLoaded = $state(false);
 	let frontImageLoaded = $state(false);
+	let scrollY = $state(0);
 
 	$effect(() => {
 		if (backImageLoaded && frontImageLoaded) showContent = true;
 	});
 </script>
+
+<svelte:window bind:scrollY />
 
 <div
 	class="relative h-screen overflow-hidden"
@@ -55,8 +60,9 @@
 
 	{#if showContent}
 		<h1
-			class="unselectable space-grotesk-700 absolute top-[46.5%] left-1/2 -translate-x-1/2 -translate-y-1/2 transform px-4 whitespace-nowrap text-white mix-blend-overlay md:top-[45%] lg:top-[44%]"
+			class="unselectable space-grotesk-700 absolute top-[46.5%] left-1/2 px-4 whitespace-nowrap text-white mix-blend-overlay md:top-[45%] lg:top-[44%]"
 			in:slide={{ delay: titleInDelay, duration: titleInDuration, easing: expoOut, axis: 'y' }}
+			style="transform: translate(-50%, calc(-50% + {scrollY * parallaxFactor}px));"
 		>
 			{title}
 		</h1>
