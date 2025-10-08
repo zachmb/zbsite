@@ -3,7 +3,7 @@ import { readable } from 'svelte/store';
 
 // https://github.com/pearofducks/svelte-match-media/blob/master/index.js
 const setupMediaQuery = (query: string) => (set: (matches: boolean) => void) => {
-	if (browser && window.matchMedia) {
+	if (browser) {
 		const mediaQueryList = window.matchMedia(query);
 
 		const callback = (event: MediaQueryListEvent) => set(event.matches);

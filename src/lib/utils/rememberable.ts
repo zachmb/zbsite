@@ -20,13 +20,13 @@ const rememberable = <T extends Serializable>(
 ) => {
 	const { subscribe, set, update } = writable(initial);
 
-	if (browser && localStorage) {
+	if (browser) {
 		const storedValue = localStorage.getItem(key);
 		if (storedValue) set(options.deserialize(storedValue));
 	}
 
 	subscribe((value) => {
-		if (browser && localStorage) localStorage.setItem(key, options.serialize(value));
+		if (browser) localStorage.setItem(key, options.serialize(value));
 	});
 
 	return {
