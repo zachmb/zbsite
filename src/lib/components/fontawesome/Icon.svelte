@@ -23,19 +23,13 @@
 
 	type IconPack = keyof IconPackStyles;
 
-	type Props<P extends IconPack> = {
-		pack: P;
-		style: IconPackStyles[P];
-		name: string;
-	};
+	type Props = {
+		[P in IconPack]: IconPackStyles[P] extends never
+			? { pack: P; style?: never; name: string }
+			: { pack: P; style: IconPackStyles[P]; name: string };
+	}[IconPack];
 
-	type BrandsProps = {
-		pack: 'brands';
-		style?: never;
-		name: string;
-	};
-
-	let { pack, style, name }: Props<IconPack> | BrandsProps = $props();
+	let { pack, style, name }: Props = $props();
 
 	name = name.trim();
 	if (name.startsWith('fa-')) name = name.slice(3);
