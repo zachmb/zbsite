@@ -29,7 +29,7 @@ const animateLetter = (element: TextGlitchLetterElement, options: TextGlitchOpti
 };
 
 // https://codepen.io/mpeach/pen/dXyoPL
-export const textGlitch =
+const textGlitch =
 	(options: Partial<TextGlitchOptions> = {}): Attachment =>
 	(element) => {
 		if (element.children.length) throw new Error('Element must not have children');
@@ -95,3 +95,5 @@ export const textGlitch =
 			if (i < words.length - 1) element.appendChild(document.createTextNode(' '));
 		});
 	};
+
+export default textGlitch;
