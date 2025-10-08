@@ -86,6 +86,7 @@
 
 <style>
 	@reference 'tailwindcss';
+	@reference '../../app.css';
 
 	h1 {
 		font-size: clamp(1rem, 15vw, 10rem);
@@ -124,16 +125,14 @@
 	.loading-bar {
 		@apply w-1/2;
 		@apply h-full;
-		@apply bg-white;
 		@apply rounded-full;
-		@apply opacity-15;
+		@apply glass-14;
 		animation-duration: var(--bars-duration);
 		animation-timing-function: ease-in-out;
 		animation-iteration-count: infinite;
 	}
 
 	.loading-bar-horizontal {
-		@apply opacity-15;
 		transform: translateX(-100%) translateY(0);
 		animation-name: slide-horizontal-tl;
 	}
@@ -173,7 +172,6 @@
 	.loading-bar-vertical {
 		@apply h-1/2;
 		@apply w-full;
-		@apply opacity-15;
 		transform: translateX(0) translateY(-100%);
 		animation-name: slide-vertical-tl;
 	}
@@ -210,7 +208,6 @@
 	.loading-bar-vertical-reverse {
 		@apply h-1/2;
 		@apply w-full;
-		@apply opacity-15;
 		transform: translateX(0) translateY(200%);
 		animation-name: slide-vertical-br;
 	}
@@ -245,7 +242,6 @@
 	}
 
 	.loading-bar-horizontal-reverse {
-		@apply opacity-15;
 		transform: translateX(200%) translateY(0);
 		animation-name: slide-horizontal-br;
 	}
