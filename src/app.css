@@ -96,7 +96,7 @@
 }
 
 * {
-	@apply space-grotesk-400 text-on-background;
+	@apply space-grotesk-400;
 	outline: none;
 	box-sizing: border-box;
 }
@@ -106,12 +106,8 @@ html, body {
 	@apply bg-background;
 }
 
-img, .unselectable {
-	pointer-events: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+img {
+	@apply select-none pointer-events-none;
 }
 
 body.minecraft * {

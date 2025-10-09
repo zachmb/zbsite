@@ -1,6 +1,6 @@
 import type { Attachment } from 'svelte/attachments';
 
-type TextGlitchOptions = {
+export type TextGlitchOptions = {
 	speedMs: number;
 	delayBetweenLetters: number;
 	iterationsPerLetter: number;
