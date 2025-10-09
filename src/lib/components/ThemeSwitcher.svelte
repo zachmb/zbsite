@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '$components/fontawesome/Icon.svelte';
 	import { theme } from '$stores';
+	import { fahhhhh } from '$utils/sounds';
 </script>
 
 <button
@@ -9,7 +10,10 @@
 	onclick={() => {
 		if ($theme === 'light') theme.set('dark');
 		else if ($theme === 'dark') theme.set('auto');
-		else theme.set('light');
+		else {
+			theme.set('light');
+			fahhhhh.play();
+		}
 	}}
 >
 	{#if $theme === 'light'}
