@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Icon from '$components/fontawesome/Icon.svelte';
 	import { theme } from '$stores';
-	import { fahhhhh } from '$utils/sounds';
+	import sounds from '$utils/sounds';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
-		fahhhhh.load();
+		sounds.fahhhhh.load();
 	});
 </script>
 
@@ -17,7 +17,7 @@
 		else if ($theme === 'dark') theme.set('auto');
 		else {
 			theme.set('light');
-			fahhhhh.play();
+			sounds.fahhhhh.play();
 		}
 	}}
 >

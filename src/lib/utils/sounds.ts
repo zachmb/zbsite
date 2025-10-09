@@ -30,4 +30,12 @@ class Sound {
 	}
 }
 
-export const fahhhhh = new Sound('/sounds/fahhhhh.mp3');
+const sounds = {
+	fahhhhh: new Sound('/sounds/fahhhhh.mp3')
+} as const;
+
+export const loadAllSounds = () => {
+	Object.values(sounds).forEach((sound) => sound.load());
+};
+
+export default sounds;
