@@ -96,14 +96,14 @@
 }
 
 * {
-	@apply space-grotesk-400;
+	@apply space-grotesk-400 text-on-background;
 	outline: none;
 	box-sizing: border-box;
 }
 
 html, body {
-	margin: 0;
-	padding: 0;
+	@apply m-0 p-0;
+	@apply bg-background;
 }
 
 img, .unselectable {

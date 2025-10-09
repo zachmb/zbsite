@@ -58,7 +58,7 @@
 
 	{#if showContent}
 		<h1
-			class="unselectable space-grotesk-700 absolute top-[46.5%] left-1/2 px-4 whitespace-nowrap text-white mix-blend-overlay md:top-[45%] lg:top-[44%]"
+			class="unselectable space-grotesk-700 absolute top-[46.5%] left-1/2 px-4 whitespace-nowrap !text-white mix-blend-overlay md:top-[45%] lg:top-[44%]"
 			in:slide={{ delay: titleInDelay, duration: titleInDuration, easing: expoOut, axis: 'y' }}
 			style="transform: translate(-50%, calc(-50% + {scrollY * parallaxFactor}px));"
 		>
@@ -94,8 +94,7 @@
 
 	.image {
 		@apply absolute;
-		@apply h-full;
-		@apply w-full;
+		@apply h-full w-full;
 		@apply object-cover;
 	}
 
@@ -123,8 +122,7 @@
 	}
 
 	.loading-bar {
-		@apply w-1/2;
-		@apply h-full;
+		@apply h-full w-1/2;
 		@apply rounded-full;
 		@apply glass-14;
 		animation-duration: var(--bars-duration);
@@ -170,8 +168,7 @@
 	}
 
 	.loading-bar-vertical {
-		@apply h-1/2;
-		@apply w-full;
+		@apply h-1/2 w-full;
 		transform: translateX(0) translateY(-100%);
 		animation-name: slide-vertical-tl;
 	}
@@ -206,8 +203,7 @@
 	}
 
 	.loading-bar-vertical-reverse {
-		@apply h-1/2;
-		@apply w-full;
+		@apply h-1/2 w-full;
 		transform: translateX(0) translateY(200%);
 		animation-name: slide-vertical-br;
 	}

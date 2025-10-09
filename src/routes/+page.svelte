@@ -6,4 +6,4 @@
 </script>
 
 <Landing title="MADKARMA" />
-<div class="h-screen"></div>
+<div class="bg-background h-screen"></div>
