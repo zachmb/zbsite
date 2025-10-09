@@ -2,6 +2,11 @@
 	import Icon from '$components/fontawesome/Icon.svelte';
 	import { theme } from '$stores';
 	import { fahhhhh } from '$utils/sounds';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		fahhhhh.load();
+	});
 </script>
 
 <button
