@@ -1,9 +1,12 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
 	import Landing from '$components/Landing.svelte';
+	import LetterSeparator from '$components/LetterSeparator.svelte';
 
 	let { data }: PageProps = $props();
 </script>
 
-<Landing title="MADKARMA" />
-<div class="bg-background h-screen"></div>
+<div class="bg-background">
+	<Landing title="MADKARMA" />
+	<LetterSeparator rows={10} columns={18} />
+</div>
