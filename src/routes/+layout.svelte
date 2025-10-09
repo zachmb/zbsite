@@ -18,10 +18,6 @@
 		$theme === 'auto' ? ($systemPrefersDark ? 'dark' : 'light') : $theme
 	);
 
-	$effect(() => {
-		import(`../css/${effectiveTheme}.css`);
-	});
-
 	onMount(() => {
 		iconUrl = generateRandomSquarePng(16);
 

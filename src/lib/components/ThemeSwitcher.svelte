@@ -4,7 +4,7 @@
 </script>
 
 <button
-	class="glass-14 cursor-pointer rounded p-2 text-[var(--md-sys-color-on-background)]"
+	class="glass-14 text-on-background cursor-pointer rounded p-2"
 	type="button"
 	onclick={() => {
 		if ($theme === 'light') theme.set('dark');
