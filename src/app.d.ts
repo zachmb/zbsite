@@ -12,6 +12,10 @@ declare global {
 	interface Array<T> {
 		randomPick(): T;
 	}
+
+	interface Number {
+		clamp(min: number, max: number): number;
+	}
 }
 
 export {};
