@@ -85,9 +85,10 @@ const textGlitch =
 
 			wordSpan.addEventListener('mouseenter', () =>
 				Array.from(wordSpan.querySelectorAll('.char')).forEach((charSpan, i) =>
-					setTimeout(() => {
-						animateLetter(charSpan as TextGlitchLetterElement, mergedOptions);
-					}, mergedOptions.delayBetweenLetters * i)
+					setTimeout(
+						() => animateLetter(charSpan as TextGlitchLetterElement, mergedOptions),
+						mergedOptions.delayBetweenLetters * i
+					)
 				)
 			);
 
