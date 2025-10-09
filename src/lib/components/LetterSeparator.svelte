@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { randomInt, times } from '$utils';
+	import { randomIntBetween, times } from '$utils';
 	import textGlitch, { type TextGlitchOptions } from '$utils/text-glitch';
 
 	type Props = { rows: number; columns: number; options?: Partial<TextGlitchOptions> };
@@ -12,7 +12,7 @@
 >
 	{#each times(rows * columns)}
 		<span {@attach textGlitch(options)} class="flex items-center justify-center">
-			{String.fromCharCode(randomInt(33 /* ! */, 126 /* ~ */))}
+			{String.fromCharCode(randomIntBetween(33 /* UTF-8 ! */, 126 /* UTF-8 ~ */))}
 		</span>
 	{/each}
 </div>

@@ -20,7 +20,7 @@ export const generateRandomSquarePng = (size: number) => {
 	return dataUrl;
 };
 
-export const randomInt = (min: number, max: number) =>
+export const randomIntBetween = (min: number, max: number) =>
 	Math.floor(Math.random() * (max - min + 1)) + min;
 
 export const times = (n: number) => Array.from({ length: n });
