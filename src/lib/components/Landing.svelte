@@ -3,6 +3,7 @@
 	import { slide } from 'svelte/transition';
 	// https://svelte.dev/playground/easing
 	import { expoOut } from 'svelte/easing';
+	import { randomIntBetween, times } from '$utils';
 
 	type Props = {
 		title: string;
@@ -11,6 +12,7 @@
 		showBars?: boolean;
 		barsAnimationDurationMs?: number;
 		parallaxFactor?: number;
+		starsCount?: number;
 	};
 	let {
 		title,
@@ -18,7 +20,8 @@
 		titleInDuration = 1100,
 		showBars = true,
 		barsAnimationDurationMs = 8000,
-		parallaxFactor = 0.35
+		parallaxFactor = 0.35,
+		starsCount = 750
 	}: Props = $props();
 
 	title = title.trim();
@@ -55,6 +58,24 @@
 		class="image fade-away"
 		onload={() => (backImageLoaded = true)}
 	/>
+
+	{#each times(starsCount)}
+		<!-- prettier-ignore -->
+		<div
+			class="star"
+			style="top: {
+				randomIntBetween(0, 73)
+			}%; left: {
+				randomIntBetween(0, 100)
+			}%; width: {
+				randomIntBetween(1, 3)
+			}px; animation-duration: {
+				randomIntBetween(2, 5)
+			}s; animation-delay: {
+				randomIntBetween(0, 3)
+			}s;"
+		></div>
+	{/each}
 
 	{#if showContent}
 		<h1
@@ -96,6 +117,25 @@
 		@apply absolute;
 		@apply h-full w-full;
 		@apply object-cover;
+	}
+
+	.star {
+		@apply absolute;
+		@apply aspect-square rounded-full;
+		@apply bg-white;
+		animation-name: twinkle;
+		animation-iteration-count: infinite;
+		animation-timing-function: ease-in-out;
+	}
+
+	@keyframes twinkle {
+		0%,
+		100% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
 	}
 
 	.fade-away {
