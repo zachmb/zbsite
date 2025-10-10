@@ -50,7 +50,14 @@ const rememberable = <T extends Serializable>(
 	return {
 		subscribe,
 		set,
-		update
+		update,
+		reset: () => set(initial),
+		remove: () => {
+			if (!browser) return;
+			localStorage.removeItem(key);
+			skipNextSave = true;
+			set(initial);
+		}
 	};
 };
 
