@@ -8,6 +8,8 @@
 	import { systemPrefersDark } from '$stores/media-queries';
 	import FontAwesomeHead from '$components/fontawesome/Head.svelte';
 	import ThemeSwitcher from '$components/ThemeSwitcher.svelte';
+	import Flashbang from '$components/Flashbang.svelte';
+	import { loadAllSounds } from '$utils/sounds';
 
 	type Props = { children: Snippet };
 	let { children }: Props = $props();
@@ -24,6 +26,8 @@
 		Object.defineProperty(window, '__whatCouldThisDo', {
 			get: () => showEasterEgg.set(!$showEasterEgg)
 		});
+
+		loadAllSounds();
 	});
 </script>
 
@@ -43,6 +47,8 @@
 		body.classList.add(effectiveTheme);
 	}}
 />
+
+<Flashbang chance={0.01} />
 
 <div class="fixed top-4 right-4 z-50">
 	<ThemeSwitcher />

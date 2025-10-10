@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 
 class Sound {
-	private audio: HTMLAudioElement | null = null;
+	public readonly audio: HTMLAudioElement | null = null;
 
 	constructor(
 		public readonly src: string,
@@ -16,26 +16,33 @@ class Sound {
 	}
 
 	load() {
-		if (this.audio) {
-			this.audio.preload = 'auto';
-			this.audio.load();
-		}
+		if (!this.audio) return;
+		this.audio.preload = 'auto';
+		this.audio.load();
 	}
 
-	play() {
-		if (this.audio) {
-			this.audio.pause();
-			this.audio.play();
-		}
+	play(onEnded?: () => void) {
+		if (!this.audio) return;
+
+		this.audio.pause();
+		this.audio.play();
+
+		if (!onEnded) return;
+
+		const onEndedWrapper = () => {
+			this.audio!.removeEventListener('ended', onEndedWrapper);
+			onEnded();
+		};
+
+		this.audio.addEventListener('ended', onEndedWrapper);
 	}
 }
 
 const sounds = {
-	fahhhhh: new Sound('/sounds/fahhhhh.mp3')
+	fahhhhh: new Sound('/sounds/fahhhhh.mp3'),
+	thinkFast: new Sound('/sounds/think-fast.opus')
 } as const;
 
-export const loadAllSounds = () => {
-	Object.values(sounds).forEach((sound) => sound.load());
-};
+export const loadAllSounds = () => Promise.all(Object.values(sounds).map((sound) => sound.load()));
 
 export default sounds;
