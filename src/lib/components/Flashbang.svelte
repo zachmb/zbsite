@@ -1,17 +1,20 @@
 <script lang="ts">
 	import sounds from '$utils/sounds';
 	import { userHasInteracted } from '$stores';
+	import { flashbang } from '$stores';
 
 	type Props = { chance: number };
 	let { chance }: Props = $props();
 
-	const shouldFlash = Boolean.random(chance);
+	const shouldFlash = $flashbang || Boolean.random(chance);
 	let imageLoaded = $state(false);
 	let timeoutExpired = $state(false);
 	let audioPlayed = $state(false);
 
 	$effect(() => {
 		if (!shouldFlash || !imageLoaded || audioPlayed) return;
+
+		flashbang.remove();
 
 		sounds.thinkFast.play(() => (audioPlayed = true));
 		setTimeout(() => (timeoutExpired = true), 1200);
