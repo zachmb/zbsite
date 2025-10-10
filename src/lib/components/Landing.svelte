@@ -104,6 +104,7 @@
 		@apply h-full w-full;
 		@apply object-cover;
 	}
+
 	@keyframes twinkle {
 		0%,
 		100% {
