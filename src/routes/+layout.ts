@@ -9,3 +9,7 @@ Array.prototype.randomPick = function <T>(): T {
 Number.prototype.clamp = function (min: number, max: number): number {
 	return Math.min(Math.max(this.valueOf(), min), max);
 };
+
+Boolean.random = function (chance: number = 50): boolean {
+	return Math.random() < chance.clamp(0, 100) / 100;
+};

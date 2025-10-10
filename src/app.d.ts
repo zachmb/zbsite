@@ -16,6 +16,10 @@ declare global {
 	interface Number {
 		clamp(min: number, max: number): number;
 	}
+
+	interface BooleanConstructor {
+		random(chance?: number): boolean;
+	}
 }
 
 export {};
