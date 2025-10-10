@@ -3,7 +3,7 @@
 	import { slide } from 'svelte/transition';
 	// https://svelte.dev/playground/easing
 	import { expoOut } from 'svelte/easing';
-	import { randomIntBetween, times } from '$utils';
+	import StarField from '$components/StarField.svelte';
 
 	type Props = {
 		title: string;
@@ -59,23 +59,9 @@
 		onload={() => (backImageLoaded = true)}
 	/>
 
-	{#each times(starsCount)}
-		<!-- prettier-ignore -->
-		<div
-			class="star"
-			style="top: {
-				randomIntBetween(0, 73)
-			}%; left: {
-				randomIntBetween(0, 100)
-			}%; width: {
-				randomIntBetween(1, 3)
-			}px; animation-duration: {
-				randomIntBetween(2, 5)
-			}s; animation-delay: {
-				randomIntBetween(0, 3)
-			}s;"
-		></div>
-	{/each}
+	{#if showContent}
+		<StarField count={starsCount} maxHeightPercent={73} />
+	{/if}
 
 	{#if showContent}
 		<h1
@@ -118,16 +104,6 @@
 		@apply h-full w-full;
 		@apply object-cover;
 	}
-
-	.star {
-		@apply absolute;
-		@apply aspect-square rounded-full;
-		@apply bg-white;
-		animation-name: twinkle;
-		animation-iteration-count: infinite;
-		animation-timing-function: ease-in-out;
-	}
-
 	@keyframes twinkle {
 		0%,
 		100% {
