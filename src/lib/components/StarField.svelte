@@ -10,7 +10,7 @@
 
 	let canvas: HTMLCanvasElement;
 
-	const maxHeightFraction = $derived(maxHeightPercent / 100);
+	const maxHeightFraction = maxHeightPercent / 100;
 
 	// Vertex shader - handles star positions
 	const vertexShaderSource = `
