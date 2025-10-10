@@ -47,16 +47,22 @@ const rememberable = <T extends Serializable>(
 		localStorage.setItem(key, opts.serialize(value));
 	});
 
+	const _reset = () => set(initial);
+
 	return {
 		subscribe,
 		set,
 		update,
-		reset: () => set(initial),
-		remove: () => {
+		reset: _reset,
+		remove: (reset: boolean = opts.saveInitial) => {
 			if (!browser) return;
+
 			localStorage.removeItem(key);
+
+			if (!reset) return;
+
 			skipNextSave = true;
-			set(initial);
+			_reset();
 		}
 	};
 };
