@@ -13,20 +13,38 @@ type Serializable =
 const rememberable = <T extends Serializable>(
 	key: string,
 	initial: T,
-	options: { serialize: (value: T) => string; deserialize: (value: string) => T } = {
-		serialize: JSON.stringify,
-		deserialize: JSON.parse
-	}
+	options: Partial<{
+		serialize: (value: T) => string;
+		deserialize: (value: string) => T;
+		saveInitial: boolean;
+	}> = {}
 ) => {
 	const { subscribe, set, update } = writable(initial);
 
+	const opts: Required<typeof options> = {
+		serialize: JSON.stringify,
+		deserialize: JSON.parse,
+		saveInitial: true,
+		...options
+	};
+
+	let skipNextSave = false;
+
 	if (browser) {
 		const storedValue = localStorage.getItem(key);
-		if (storedValue) set(options.deserialize(storedValue));
+		if (storedValue) set(opts.deserialize(storedValue));
+		else if (!opts.saveInitial) skipNextSave = true;
 	}
 
 	subscribe((value) => {
-		if (browser) localStorage.setItem(key, options.serialize(value));
+		if (!browser) return;
+
+		if (skipNextSave) {
+			skipNextSave = false;
+			return;
+		}
+
+		localStorage.setItem(key, opts.serialize(value));
 	});
 
 	return {
