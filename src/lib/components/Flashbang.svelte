@@ -12,9 +12,14 @@
 	let audioPlayed = $state(false);
 
 	$effect(() => {
-		if (!shouldFlash || !imageLoaded || audioPlayed) return;
+		if (!shouldFlash || !imageLoaded || audioPlayed) {
+			if (document.fullscreenElement) document.exitFullscreen();
+			return;
+		}
 
 		flashbang.remove();
+
+		if ($userHasInteracted) document.body.requestFullscreen();
 
 		sounds.thinkFast.play(() => (audioPlayed = true));
 		setTimeout(() => (timeoutExpired = true), 1200);
