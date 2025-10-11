@@ -5,11 +5,11 @@ class Sound {
 
 	constructor(
 		public readonly src: string,
-		private readonly volume: number = 1
+		private readonly volume: number = 100
 	) {
 		if (browser) {
 			this.audio = new Audio(this.src);
-			this.audio.volume = this.volume.clamp(0, 1);
+			this.audio.volume = this.volume.clamp(0, 100) / 100;
 
 			this.audio.addEventListener('pause', () => (this.audio!.currentTime = 0));
 		}
@@ -40,7 +40,7 @@ class Sound {
 
 const sounds = {
 	fahhhhh: new Sound('/sounds/fahhhhh.mp3'),
-	thinkFast: new Sound('/sounds/think-fast.opus')
+	thinkFast: new Sound('/sounds/think-fast.opus', 45)
 } as const;
 
 export const loadAllSounds = () => Promise.all(Object.values(sounds).map((sound) => sound.load()));
