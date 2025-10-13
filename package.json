@@ -12,7 +12,8 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-		"icons": "bun ./scripts/update-icons.ts"
+		"icons": "bun ./scripts/update-icons.ts",
+		"me": "bun ./scripts/update-me-file.ts"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
