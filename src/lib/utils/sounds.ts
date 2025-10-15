@@ -1,7 +1,8 @@
 import { browser } from '$app/environment';
+import type { PossiblyNull } from '@madkarma/ts-utils/types';
 
 class Sound {
-	public readonly audio: HTMLAudioElement | null = null;
+	public readonly audio: PossiblyNull<HTMLAudioElement> = null;
 
 	constructor(
 		public readonly src: string,

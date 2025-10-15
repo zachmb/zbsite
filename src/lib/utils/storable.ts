@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
+import type { JSONSerializable } from '@madkarma/ts-utils/types';
 
 export type WidenLiteral<T> = T extends number
 	? number
@@ -11,16 +12,7 @@ export type WidenLiteral<T> = T extends number
 				? undefined
 				: T;
 
-export type JSONPrimitive = string | number | boolean | null | undefined;
-
-export type Serializable =
-	| JSONPrimitive
-	| Serializable[]
-	| {
-			[key: string]: Serializable;
-	  };
-
-const storable = <T extends Serializable>(
+const storable = <T extends JSONSerializable>(
 	key: string,
 	initial: T,
 	options: Partial<{

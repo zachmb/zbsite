@@ -1,4 +1,5 @@
 import type { Attachment } from 'svelte/attachments';
+import type { PossiblyNull } from '@madkarma/ts-utils/types';
 
 export interface TiltOptions {
 	scale: number;
@@ -62,7 +63,7 @@ const tilt =
 			);
 		};
 
-		let animationId: number | null = null;
+		let animationId: PossiblyNull<number> = null;
 		const smoothTransition = () => {
 			if (animationId !== null) cancelAnimationFrame(animationId);
 

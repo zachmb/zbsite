@@ -8,18 +8,6 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
-
-	interface Array<T> {
-		randomPick(): T;
-	}
-
-	interface Number {
-		clamp(min: number, max: number): number;
-	}
-
-	interface BooleanConstructor {
-		random(chance?: number): boolean;
-	}
 }
 
 export {};
