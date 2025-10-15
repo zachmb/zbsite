@@ -1,5 +1,5 @@
 import { writable, readable } from 'svelte/store';
-import storable from '$utils/storable';
+import storable from '@madkarma/svelte-storable';
 import { browser } from '$app/environment';
 
 export const showEasterEgg = writable(false);

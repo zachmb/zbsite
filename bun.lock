@@ -4,7 +4,8 @@
     "": {
       "name": "site",
       "dependencies": {
-        "@madkarma/ts-utils": "^1.1.1",
+        "@madkarma/svelte-storable": "^1.0.2",
+        "@madkarma/ts-utils": "^1.1.2",
         "zod": "^4.1.12",
       },
       "devDependencies": {
@@ -127,6 +128,8 @@
     "@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.25", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ=="],
+
+    "@madkarma/svelte-storable": ["@madkarma/svelte-storable@1.0.2", "", { "dependencies": { "@madkarma/ts-utils": "^1.1.2" }, "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-Q0pr5+bJyxWhKpfKRjg6rcQ9cAfLB3PkIEe7SNFSqdXGeHwfXVOjgKaO+D9L/VRyRjtg0s10DSq03nVyqYVdzw=="],
 
     "@madkarma/ts-utils": ["@madkarma/ts-utils@1.1.2", "", { "peerDependencies": { "typescript": "^5.9.3" } }, "sha512-iQqKMtcd0QXSHzHm0L0VNHcUyAuYyd9W05F9fG/pvdB3YZOQzfN85v6pFUH5BdjbjhFGOIs/JwmXBEu290YRww=="],
 
