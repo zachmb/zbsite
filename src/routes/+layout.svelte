@@ -48,7 +48,7 @@
 	}}
 />
 
-<Flashbang chance={0.01} />
+<Flashbang chance={0.05} />
 
 <div class="fixed top-4 right-4 z-50">
 	<ThemeSwitcher />
