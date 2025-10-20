@@ -7,10 +7,6 @@
 	src: url('/fonts/Minecraft.ttf') format('truetype');
 }
 
-/* https: //tailwindcss.com/docs/dark-mode */
-@custom-variant dark (&:where(.dark, .dark *));
-@custom-variant light (&:where(.light, .light *));
-
 .light {
 	--text: rgb(30, 3, 43);
 	--background: rgb(245, 221, 253);
