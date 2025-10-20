@@ -5,7 +5,7 @@
 </script>
 
 <button
-	class="glass-14 text-on-background cursor-pointer rounded p-2"
+	class="glass-14 text-text cursor-pointer rounded p-2"
 	type="button"
 	onclick={() => {
 		if ($theme === 'light') theme.set('dark');

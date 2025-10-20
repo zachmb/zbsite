@@ -56,7 +56,7 @@
 	<Landing title="MADKARMA" />
 
 	<Section title="About me">
-		<div class="text-on-background relative flex h-full flex-col items-center justify-center gap-4">
+		<div class="text-text relative flex h-full flex-col items-center justify-center gap-4">
 			<p>{currentSentences.paragraph}</p>
 			<button
 				class="cursor-pointer"

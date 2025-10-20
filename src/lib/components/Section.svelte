@@ -6,7 +6,7 @@
 
 <section class="relative h-screen">
 	<h2
-		class="!text-tertiary !orbitron-700 pointer-events-none absolute top-1/2 left-1/2 translate-[-50%] text-center opacity-40 select-none"
+		class="!text-secondary !orbitron-700 pointer-events-none absolute top-1/2 left-1/2 translate-[-50%] text-center opacity-40 select-none"
 	>
 		{title}
 	</h2>
