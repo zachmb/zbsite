@@ -9,7 +9,6 @@
 	type="button"
 	onclick={() => {
 		if ($theme === 'light') theme.set('dark');
-		else if ($theme === 'dark') theme.set('auto');
 		else {
 			theme.set('light');
 			sounds.fahhhhh.play();
@@ -18,9 +17,7 @@
 >
 	{#if $theme === 'light'}
 		<Icon pack="utility" style="semibold" name="sun" />
-	{:else if $theme === 'dark'}
-		<Icon pack="utility" style="semibold" name="moon" />
 	{:else}
-		<Icon pack="utility" style="semibold" name="laptop" />
+		<Icon pack="utility" style="semibold" name="moon" />
 	{/if}
 </button>
