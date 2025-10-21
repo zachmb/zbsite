@@ -1,5 +1,5 @@
 import { writeFile } from 'node:fs/promises';
-import { join, resolve, normalize } from 'node:path';
+import { relativeToMe } from './utils';
 
 const calculateAge = (dateOfBirth: Date): number => {
 	const today = new Date();
@@ -15,9 +15,7 @@ const calculateAge = (dateOfBirth: Date): number => {
 (async () => {
 	console.clear();
 
-	const meFile = resolve(
-		normalize(join(import.meta.dirname.replace('file://', ''), '..', 'static', 'me.txt'))
-	);
+	const meFile = relativeToMe(import.meta, '..', 'static', 'me.txt');
 
 	const age = calculateAge(new Date(2006, 1, 14));
 	const today = new Date().toLocaleDateString('en-US', {

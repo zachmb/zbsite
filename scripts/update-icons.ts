@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 import { writeFile } from 'node:fs/promises';
-import { join, resolve, normalize } from 'node:path';
+import { relativeToMe } from './utils';
 
 (async () => {
 	console.clear();
@@ -8,18 +8,14 @@ import { join, resolve, normalize } from 'node:path';
 	const response = await fetch('https://fontawesome.com/icons').then((res) => res.text());
 	const $ = cheerio.load(response);
 
-	const headComponentFile = resolve(
-		normalize(
-			join(
-				import.meta.dirname.replace('file://', ''),
-				'..',
-				'src',
-				'lib',
-				'components',
-				'fontawesome',
-				'Head.svelte'
-			)
-		)
+	const headComponentFile = relativeToMe(
+		import.meta,
+		'..',
+		'src',
+		'lib',
+		'components',
+		'fontawesome',
+		'Head.svelte'
 	);
 
 	const stylesheets = $(
