@@ -11,17 +11,37 @@
 	let { title, children, ...rest }: Props = $props();
 </script>
 
-<section class="relative h-screen {rest.class || ''}" {...withoutProps(rest, 'class')}>
-	<h2
-		class="!text-secondary !orbitron-700 pointer-events-none absolute top-1/2 left-1/2 translate-[-50%] text-center opacity-40 select-none"
-	>
-		{title}
-	</h2>
+<section
+	class="
+		before:orbitron-700
+		before:text-secondary
+		relative
+		flex
+		h-screen
+		items-center
+		justify-center
+		**:z-1
+		before:pointer-events-none
+		before:absolute
+		before:top-1/2
+		before:left-1/2
+		before:z-0
+		before:w-full
+		before:-translate-x-1/2
+		before:-translate-y-1/2
+		before:text-center
+		before:opacity-40
+		before:content-[attr(data-title)]
+		before:select-none
+		{rest.class || ''}"
+	{...withoutProps(rest, 'class')}
+	data-title={title}
+>
 	{@render children()}
 </section>
 
 <style>
-	h2 {
+	section::before {
 		font-size: clamp(1rem, 15vw, 10rem);
 	}
 </style>
