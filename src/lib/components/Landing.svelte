@@ -65,7 +65,7 @@
 
 	{#if showContent}
 		<h1
-			class="space-grotesk-700 absolute top-[46.5%] left-1/2 px-4 whitespace-nowrap !text-white mix-blend-overlay select-none md:top-[45%] lg:top-[44%]"
+			class="!orbitron-700 absolute top-[46.5%] left-1/2 px-4 whitespace-nowrap !text-white mix-blend-overlay select-none md:top-[45%] lg:top-[44%]"
 			in:slide={{ delay: titleInDelay, duration: titleInDuration, easing: expoOut, axis: 'y' }}
 			style="transform: translate(-50%, calc(-50% + {scrollY * parallaxFactor}px));"
 		>

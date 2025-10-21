@@ -65,6 +65,10 @@
 	}
 }
 
+::selection {
+	@apply bg-primary text-background;
+}
+
 * {
 	@apply space-grotesk-400;
 	outline: none;

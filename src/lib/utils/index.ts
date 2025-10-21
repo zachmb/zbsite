@@ -33,5 +33,5 @@ export const withoutProps = <T extends SvelteHTMLElements[keyof SvelteHTMLElemen
 ) => {
 	const result = { ...props };
 	for (const key of keys) delete result[key];
-	return result as Omit<T, (typeof keys)[number]>;
+	return result as OmitFix<T, (typeof keys)[number]>;
 };

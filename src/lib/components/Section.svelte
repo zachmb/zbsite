@@ -1,17 +1,15 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { SvelteHTMLElements } from 'svelte/elements';
-	import { withoutProps } from '$utils';
+	import { randomIntBetween } from '$utils';
 
-	// https://svelte.dev/docs/svelte/@attach#Passing-attachments-to-components
-	type Props = SvelteHTMLElements['section'] & {
-		title: string;
-		children: Snippet;
-	};
-	let { title, children, ...rest }: Props = $props();
+	type Props = { title: string; children: Snippet };
+	let { title, children }: Props = $props();
+
+	const id = `${title.toLowerCase().replaceAll(' ', '-')}-${randomIntBetween(0, 1000)}`;
 </script>
 
 <section
+	{id}
 	class="
 		before:orbitron-700
 		before:text-secondary
@@ -32,9 +30,7 @@
 		before:text-center
 		before:opacity-40
 		before:content-[attr(data-title)]
-		before:select-none
-		{rest.class || ''}"
-	{...withoutProps(rest, 'class')}
+		before:select-none"
 	data-title={title}
 >
 	{@render children()}
