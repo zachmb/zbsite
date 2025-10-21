@@ -1,15 +1,12 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { randomIntBetween } from '$utils';
 
 	type Props = { title: string; children: Snippet };
 	let { title, children }: Props = $props();
-
-	const id = `${title.toLowerCase().replaceAll(' ', '-')}-${randomIntBetween(0, 1000)}`;
 </script>
 
 <section
-	{id}
+	id={title.toLowerCase().replaceAll(' ', '-')}
 	class="
 		before:orbitron-700
 		before:text-secondary
