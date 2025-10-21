@@ -9,7 +9,7 @@
 <main class="bg-background">
 	<Landing title="MADKARMA" />
 
-	<Section title="Me">
+	<Section title="About me">
 		<div class="text-text flex h-full flex-col items-center justify-center gap-4">
 			{data.user_info.bio}
 		</div>
