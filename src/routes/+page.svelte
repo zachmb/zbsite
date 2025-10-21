@@ -48,8 +48,6 @@
 	let currentSentencesIndex = $state(0);
 	let currentSentences = $derived(sentences[currentSentencesIndex % sentences.length]);
 	let naturalButtonPos: PossiblyUndefined<ReturnType<PosCallback>> = $state(undefined);
-
-	$effect(() => currentSentences.action?.());
 </script>
 
 <main class="bg-background">
@@ -64,6 +62,7 @@
 					? `translate(${currentSentences.buttonPos().x - naturalButtonPos.x}px, ${currentSentences.buttonPos().y - naturalButtonPos.y}px)`
 					: undefined}
 				onclick={() => {
+					currentSentences.action?.();
 					currentSentencesIndex++;
 				}}
 				{@attach (button) => {
@@ -77,6 +76,19 @@
 			</button>
 		</div>
 	</Section>
+
+	{#if showContent}
+		<Section
+			title="Me"
+			{@attach (section) => {
+				section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}}
+		>
+			<div class="text-text flex h-full flex-col items-center justify-center gap-4">
+				{data.user_info.bio}
+			</div>
+		</Section>
+	{/if}
 </main>
 
 <style>
