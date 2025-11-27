@@ -6,7 +6,16 @@ export const showEasterEgg = writable(false);
 
 export const flashbang = storable('FLASHBANG_ME', false, { saveInitial: false });
 
-export const theme = storable<'light' | 'dark'>('theme', 'dark');
+export const theme = storable<'light' | 'dark'>('theme', 'dark', {
+	deserialize: (value) => {
+		try {
+			return JSON.parse(value);
+		} catch {
+			// Handle legacy plain string values
+			return value === 'light' || value === 'dark' ? value : 'dark';
+		}
+	}
+});
 
 export const userHasInteracted = readable(false, (set) => {
 	if (!browser) return;

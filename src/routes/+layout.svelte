@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-	<title>{page.url.pathname}</title>
+	<title>Zachary Basinger</title>
 	<link rel="icon" type="image/png" href={iconUrl} />
 </svelte:head>
 
