@@ -3,6 +3,7 @@
 	import Landing from '$components/Landing.svelte';
 	import Section from '$components/Section.svelte';
 	import Holding from '$components/Holding.svelte';
+	import Seriously from '$components/Seriously.svelte';
 
 	let { data }: PageProps = $props();
 </script>
@@ -15,6 +16,8 @@
 			{data.user_info.bio}
 		</div>
 	</Section>
+
+	<Seriously />
 
 	<Holding />
 </main>
