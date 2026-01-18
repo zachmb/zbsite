@@ -23,9 +23,12 @@
 		before:opacity-40
 		before:content-[attr(data-title)]
 		before:select-none"
-	data-title="Zabasi Group" >
+	data-title="Zabasi Group"
+>
 	<h1 class="text-white text-3xl font-bold text-quaternary">
-		I own the <a href="https://www.zabasi.com/" class="text-tertiary hover:underline text-white">Zabasi Group</a> -- a holding company for my ventures
+		I own <a href="https://www.glasscoral.com/" class="text-tertiary hover:underline text-white"
+			>GlassCoral</a
+		> -- a holding company for my ventures
 	</h1>
 </section>
 
