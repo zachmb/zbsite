@@ -23,7 +23,7 @@
 		before:opacity-40
 		before:content-[attr(data-title)]
 		before:select-none"
-	data-title="Zabasi Group"
+	data-title="GlassCoral"
 >
 	<h1 class="text-white text-3xl font-bold text-quaternary">
 		I own <a href="https://www.glasscoral.com/" class="text-tertiary hover:underline text-white"
