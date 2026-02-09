@@ -5,11 +5,15 @@
 	import Holding from '$components/Holding.svelte';
 	import Seriously from '$components/Seriously.svelte';
 
+	import GlassCoral from '$components/GlassCoral.svelte';
+
 	let { data }: PageProps = $props();
 </script>
 
 <main class="bg-background">
 	<Landing title="ZACHARY" />
+
+	<GlassCoral />
 
 	<Section title="About me">
 		<div class="text-text flex h-full flex-col items-center justify-center gap-4">
