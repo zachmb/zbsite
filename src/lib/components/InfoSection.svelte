@@ -1,61 +1,91 @@
 <script lang="ts">
-	let links = [
-		{
-			title: 'Portfolio',
-			description: 'Glasscoral - My work and projects.',
-			href: 'https://glasscoral.com',
-			color: 'bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-200'
-		},
-		{
-			title: 'LinkedIn',
-			description: 'Connect with me professionally.',
-			href: 'https://www.linkedin.com/in/zacharybas/',
-			color: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200'
-		},
-		{
-			title: 'Major',
-			description: 'CS + Advertising at UIUC.',
-			href: 'https://publish.illinois.edu/illinoisadvertising/computer-science-advertising-illinois/',
-			color: 'bg-purple-100 dark:bg-purple-900/20 text-purple-800 dark:text-purple-200'
-		},
-		{
-			title: 'Why?',
-			description: 'Why CS + Advertising?',
-			href: 'https://siebelschool.illinois.edu/news/why-you-want-cs-econ-advertising-degree',
-			color: 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-200'
-		}
+	let nav = [
+		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/zacharybas/', external: true },
+		{ label: 'Email', href: 'mailto:zachmb2008@gmail.com', external: false }
 	];
+
+	function link(href: string, label: string, external = true) {
+		return { href, label, external };
+	}
+
+	// Inline links used in the bio below.
+	let kazwire = link('https://kazwire.com', 'Kazwire');
+	let uiuc = link(
+		'https://publish.illinois.edu/illinoisadvertising/computer-science-advertising-illinois/',
+		'University of Illinois Urbana-Champaign'
+	);
 </script>
 
-<section class="py-24 px-4 md:px-8 max-w-7xl mx-auto">
-	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-		{#each links as link}
-			<a
-				href={link.href}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="group relative overflow-hidden rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 p-6 transition-all hover:shadow-lg hover:-translate-y-1 block"
-			>
-				<div
-					class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none {link.color}"
-				></div>
-				<div class="relative z-10">
-					<h3 class="font-bold text-xl mb-2 text-white group-hover:text-white">
-						{link.title}
-					</h3>
-					<p
-						class="text-sm opacity-80 text-white group-hover:text-white leading-relaxed"
-					>
-						{link.description}
-					</p>
-                    <div class="mt-4 flex items-center text-xs font-medium uppercase tracking-wider opacity-60 group-hover:opacity-90 text-white">
-                        <span>Visit</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-1 transform transition-transform group-hover:translate-x-1">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </div>
-				</div>
-			</a>
-		{/each}
+<section class="px-6 py-24 md:py-32">
+	<div class="space-grotesk-400 mx-auto flex max-w-xl flex-col gap-10 text-text">
+		<!-- nav row -->
+		<nav class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm opacity-80">
+			{#each nav as item, i}
+				<a
+					href={item.href}
+					target={item.external ? '_blank' : undefined}
+					rel={item.external ? 'noopener noreferrer' : undefined}
+					class="text-primary underline-offset-4 transition-colors hover:text-accent hover:underline"
+				>
+					{item.label}
+				</a>
+				{#if i < nav.length - 1}
+					<span class="opacity-40">·</span>
+				{/if}
+			{/each}
+		</nav>
+
+		<!-- name -->
+		<h2 class="space-grotesk-600 text-3xl md:text-4xl">Zachary Basinger</h2>
+
+		<!-- bio -->
+		<div class="flex flex-col gap-6 text-base leading-relaxed md:text-lg">
+			<p>I'm the Founder of Deo:</p>
+			<p class="-mt-5 pl-1 opacity-90">— The PLG layer for B2C</p>
+
+			<div class="flex flex-col gap-1">
+				<p>
+					I'm also the Founder of
+					<a
+						href={kazwire.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-primary underline-offset-4 transition-colors hover:text-accent hover:underline"
+						>Kazwire</a
+					>:
+				</p>
+				<p class="pl-1 opacity-90">— A browser-gaming site with 3.8M+ users and 120M+ page views</p>
+				<p class="pl-1 opacity-90">
+					— Built full-stack on Svelte, Tailwind, TypeScript, Node, and Postgres
+				</p>
+				<p class="pl-1 opacity-90">— 700+ forks on GitHub, grown by an 8-person UGC team</p>
+			</div>
+
+			<div class="flex flex-col gap-1">
+				<p>I run a tech YouTube channel:</p>
+				<p class="pl-1 opacity-90">— 23M+ views and 200M+ impressions</p>
+				<p class="pl-1 opacity-90">— Featured on the Joe Rogan Experience and Tier 1 streams</p>
+			</div>
+
+			<p>
+				I'm studying Computer Science + Advertising at the
+				<a
+					href={uiuc.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-primary underline-offset-4 transition-colors hover:text-accent hover:underline"
+					>University of Illinois Urbana-Champaign</a
+				>
+				on a full ride — and might double major with Physics.
+			</p>
+
+			<div class="flex flex-col gap-1">
+				<p>Before all that:</p>
+				<p class="pl-1 opacity-90">— Co-founded Split Expenses, a FinTech app</p>
+				<p class="pl-1 opacity-90">— Growth Engineer at Superpower</p>
+			</div>
+
+			<p class="opacity-90">I'm 18.</p>
+		</div>
 	</div>
 </section>
