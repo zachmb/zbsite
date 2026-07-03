@@ -1,4 +1,7 @@
 {
+	"name": "Zachary Basinger",
+	"short_name": "Z. Basinger",
 	"display": "standalone",
-	"short_name": "MadKarma"
+	"background_color": "#ffffff",
+	"theme_color": "#ffffff"
 }

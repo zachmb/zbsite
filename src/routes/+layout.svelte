@@ -1,52 +1,22 @@
 <script lang="ts">
 	import '../app.css';
-
-	import { page } from '$app/state';
-	import { type Snippet, onMount } from 'svelte';
-	import { generateRandomSquarePng } from '$utils';
-	import { showEasterEgg, theme } from '$stores';
-	import FontAwesomeHead from '$components/fontawesome/Head.svelte';
-	import ThemeSwitcher from '$components/ThemeSwitcher.svelte';
-	import Flashbang from '$components/Flashbang.svelte';
-	import { loadAllSounds } from '$utils/sounds';
+	import type { Snippet } from 'svelte';
 
 	type Props = { children: Snippet };
 	let { children }: Props = $props();
-
-	let iconUrl = $state('');
-
-	onMount(() => {
-		iconUrl = generateRandomSquarePng(16);
-
-		Object.defineProperty(window, '__whatCouldThisDo', {
-			get: () => showEasterEgg.set(!$showEasterEgg)
-		});
-
-		loadAllSounds();
-	});
 </script>
 
 <svelte:head>
 	<title>Zachary Basinger</title>
-	<link rel="icon" type="image/png" href={iconUrl} />
+	<meta
+		name="description"
+		content="Zachary Basinger — 18, studying Computer Science + Advertising at UIUC. I make things on the internet."
+	/>
+	<meta name="theme-color" content="#ffffff" />
+	<link
+		rel="icon"
+		href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='Georgia,serif'%3EZ%3C/text%3E%3C/svg%3E"
+	/>
 </svelte:head>
-
-<FontAwesomeHead />
-
-<svelte:body
-	{@attach (body) => {
-		if ($showEasterEgg) body.classList.add('minecraft');
-		else body.classList.remove('minecraft');
-
-		body.classList.remove('light', 'dark');
-		body.classList.add($theme);
-	}}
-/>
-
-<Flashbang chance={0.05} />
-
-<div class="fixed top-4 right-4 z-50">
-	<ThemeSwitcher />
-</div>
 
 {@render children()}
