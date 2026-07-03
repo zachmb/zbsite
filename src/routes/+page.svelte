@@ -33,7 +33,7 @@
 				class="w-[200px] rounded-[3px] border border-rule object-cover md:w-[220px]"
 			/>
 			<figcaption class="mt-2 text-[0.8125rem] text-muted">
-				Tempe, last winter. Somewhere between a class I was skipping and a launch.
+				Westwood, Los Angeles, California
 			</figcaption>
 		</figure>
 
