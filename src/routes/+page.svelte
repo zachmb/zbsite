@@ -19,7 +19,7 @@
 				<span class="text-faint">·</span>
 				<span>CS + Advertising, UIUC</span>
 				<span class="text-faint">·</span>
-				<a href="mailto:zachmb2008@gmail.com" class="link">zachmb2008@gmail.com</a>
+				<a href="mailto:zmb3@illinois.edu" class="link">zmb3@illinois.edu</a>
 			</div>
 		</div>
 
@@ -105,7 +105,7 @@
 			<p>
 				If any of this is your kind of thing — building, distribution, giving normal people an unfair
 				advantage — I'd like to hear from you. The best way to reach me is
-				<a href="mailto:zachmb2008@gmail.com">email</a>. You can also find the code I'm proud of (and
+				<a href="mailto:zmb3@illinois.edu">email</a>. You can also find the code I'm proud of (and
 				the code I'm not) on <a href="/work">Work</a>, or track me down on
 				<a href="https://www.linkedin.com/in/zacharybas/" target="_blank" rel="noopener noreferrer"
 					>LinkedIn</a
