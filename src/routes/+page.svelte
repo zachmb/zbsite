@@ -25,88 +25,63 @@
 
 		<!-- Photo -->
 		<figure class="mb-12">
-			<img
-				src="/images/zach.png"
-				alt="Zachary Basinger"
-				width="220"
-				height="220"
-				class="w-[200px] rounded-[3px] border border-rule object-cover md:w-[220px]"
-			/>
+			<div class="flex flex-wrap items-end gap-3">
+				<img
+					src="/images/zach-young.png"
+					alt="Zachary Basinger as a kid"
+					width="220"
+					height="220"
+					class="w-[140px] rounded-[3px] border border-rule object-cover md:w-40"
+				/>
+				<img
+					src="/images/zach.png"
+					alt="Zachary Basinger"
+					width="220"
+					height="220"
+					class="w-[140px] rounded-[3px] border border-rule object-cover md:w-40"
+				/>
+			</div>
 			<figcaption class="mt-2 text-[0.8125rem] text-muted">
-				Westwood, Los Angeles, California
+				Then and now — shipping since before I could code. Westwood, Los Angeles, California.
 			</figcaption>
 		</figure>
 
 		<!-- Essay -->
 		<article class="prose">
 			<p>
-				I'm 18. I make things on the internet and try to get people to care about them. Right now
-				that means studying
+				I'm 18, studying
 				<a
 					href="https://publish.illinois.edu/illinoisadvertising/computer-science-advertising-illinois/"
 					target="_blank"
 					rel="noopener noreferrer">Computer Science + Advertising</a
-				>
-				at the University of Illinois — a strange, perfect major that is really just the two halves of
-				the same instinct: <em>build the thing</em>, then <em>make it spread</em>.
+				> at Illinois. I build things and try to get people to use them. That's most of what I do.
 			</p>
 
 			<p>
-				I've been shipping since before I could really code well. Small sites, tools nobody asked
-				for, projects that broke in front of the three people using them. Most of them failed. The
-				ones that didn't taught me the only lesson I actually trust: the distance between an idea and
-				a real thing in someone's hands is shorter than everyone pretends, and almost no one is
-				willing to walk it.
+				I've been shipping since before I could really code — small sites, tools no one asked for,
+				stuff that broke in front of the three people using it. Most of it failed. What stuck with me
+				is that the gap between an idea and a real thing in someone's hands is a lot smaller than
+				people act like it is, and almost no one bothers to close it.
 			</p>
 
-			<blockquote>
-				<em
-					>The people who win aren't the ones with the best ideas. They're the ones who kept putting
-					unfinished things in front of strangers.</em
-				>
-			</blockquote>
-
 			<p>
-				So that's the whole philosophy, if you can call it one. I build in public, I ship before I'm
-				ready, and I let the internet grade my homework. It's humbling on a daily basis and I
-				wouldn't trade it.
-			</p>
-
-			<hr />
-
-			<p>
-				Lately most of that energy goes into <a
-					href="https://deo.so"
+				Right now most of my time goes into <a
+					href="https://favente.so"
 					target="_blank"
-					rel="noopener noreferrer">Deo</a
-				>. The premise is simple and, I think, obviously true once you sit with it: the best marketers
-				for a product are the people who already love it. Deo helps startups recruit, train, and
-				actually pay creators from their own user base — real coaching, AI that verifies the work, and
-				payouts that hit automatically when the views do.
+					rel="noopener noreferrer">Favente</a
+				>. The best marketers for a product are the people who already love it, so Favente helps
+				startups recruit, train, and pay creators from their own user base — with AI that coaches
+				them instead of just grading them, and payouts that land automatically when the views do.
 			</p>
 
 			<p>
-				The part I care about most isn't the automation. It's that the AI is pointed at the human, not
-				at replacing them. A creator who submits something that doesn't land shouldn't get a cold
-				rejection — they should get a coaching note: here's what worked, here's the one thing to fix,
-				here's the reward waiting on the other side. Every win they earn follows them, brand to brand,
-				as a track record they own. The goal is to make ordinary people more hirable, not more
-				obsolete.
-			</p>
-
-			<p>
-				I think a lot about that distinction. It's easy to build technology that makes people smaller.
-				The harder, better thing is to build tools that hand someone a superpower and then get out of
+				The point isn't automating people away. It's handing someone a superpower and getting out of
 				the way.
 			</p>
 
-			<hr />
-
 			<p>
-				If any of this is your kind of thing — building, distribution, giving normal people an unfair
-				advantage — I'd like to hear from you. The best way to reach me is
-				<a href="mailto:zmb3@illinois.edu">email</a>. You can also find the code I'm proud of (and
-				the code I'm not) on <a href="/work">Work</a>, or track me down on
+				If that's your kind of thing, <a href="mailto:zmb3@illinois.edu">email me</a>. My code's on
+				<a href="/work">Work</a>, and I'm on
 				<a href="https://www.linkedin.com/in/zacharybas/" target="_blank" rel="noopener noreferrer"
 					>LinkedIn</a
 				>.
