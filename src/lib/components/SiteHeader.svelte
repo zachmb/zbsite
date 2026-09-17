@@ -1,10 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 
-	const nav = [
-		{ label: 'Writing', href: '/' },
-		{ label: 'Work', href: '/work' }
-	];
+	const nav = [{ label: 'Work', href: '/work' }];
 
 	const isActive = (href: string) =>
 		href === '/' ? page.url.pathname === '/' : page.url.pathname.startsWith(href);

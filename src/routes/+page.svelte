@@ -42,53 +42,30 @@
 				/>
 			</div>
 			<figcaption class="mt-2 text-[0.8125rem] text-muted">
-				Then and now — shipping since before I could code. Westwood, Los Angeles, California.
+				Then and now. Westwood, Los Angeles, California.
 			</figcaption>
 		</figure>
 
-		<!-- Essay -->
-		<article class="prose">
-			<p>
-				I'm 18, studying
-				<a
-					href="https://publish.illinois.edu/illinoisadvertising/computer-science-advertising-illinois/"
-					target="_blank"
-					rel="noopener noreferrer">Computer Science + Advertising</a
-				> at Illinois. I build things and try to get people to use them. That's most of what I do.
-			</p>
-
-			<p>
-				I've been shipping since before I could really code — small sites, tools no one asked for,
-				stuff that broke in front of the three people using it. Most of it failed. What stuck with me
-				is that the gap between an idea and a real thing in someone's hands is a lot smaller than
-				people act like it is, and almost no one bothers to close it.
-			</p>
-
-			<p>
-				Right now most of my time goes into <a
-					href="https://favente.so"
-					target="_blank"
-					rel="noopener noreferrer">Favente</a
-				>. The best marketers for a product are the people who already love it, so Favente helps
-				startups recruit, train, and pay creators from their own user base — with AI that coaches
-				them instead of just grading them, and payouts that land automatically when the views do.
-			</p>
-
-			<p>
-				The point isn't automating people away. It's handing someone a superpower and getting out of
-				the way.
-			</p>
-
-			<p>
-				If that's your kind of thing, <a href="mailto:zmb3@illinois.edu">email me</a>. My code's on
-				<a href="/work">Work</a>, and I'm on
-				<a href="https://www.linkedin.com/in/zacharybas/" target="_blank" rel="noopener noreferrer"
-					>LinkedIn</a
-				>.
-			</p>
-
-			<p class="text-muted">— Z</p>
-		</article>
+		<!-- Links -->
+		<nav class="flex flex-wrap items-center gap-x-2 text-[0.95rem]">
+			<a href="/work" class="link">Work</a>
+			<span class="text-faint">·</span>
+			<a href="mailto:zmb3@illinois.edu" class="link">Email</a>
+			<span class="text-faint">·</span>
+			<a
+				href="https://www.linkedin.com/in/zacharybas/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="link">LinkedIn</a
+			>
+			<span class="text-faint">·</span>
+			<a
+				href="https://github.com/zachbas"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="link">GitHub</a
+			>
+		</nav>
 	</main>
 
 	<SiteFooter />
