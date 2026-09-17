@@ -41,9 +41,6 @@
 					class="w-[140px] rounded-[3px] border border-rule object-cover md:w-40"
 				/>
 			</div>
-			<figcaption class="mt-2 text-[0.8125rem] text-muted">
-				Then and now. Westwood, Los Angeles, California.
-			</figcaption>
 		</figure>
 
 		<!-- Links -->
