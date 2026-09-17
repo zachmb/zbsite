@@ -1,6 +1,5 @@
 <script lang="ts">
 	import SiteHeader from '$components/SiteHeader.svelte';
-	import SiteFooter from '$components/SiteFooter.svelte';
 </script>
 
 <div class="mx-auto w-full max-w-[640px] px-6">
@@ -64,6 +63,4 @@
 			>
 		</nav>
 	</main>
-
-	<SiteFooter />
 </div>
