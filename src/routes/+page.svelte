@@ -12,8 +12,6 @@
 				Zachary Basinger
 			</h1>
 			<div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.8rem] text-muted">
-				<span>@zachbas</span>
-				<span class="text-faint">·</span>
 				<span>18</span>
 				<span class="text-faint">·</span>
 				<span>CS + Advertising, UIUC</span>
@@ -44,10 +42,6 @@
 
 		<!-- Links -->
 		<nav class="flex flex-wrap items-center gap-x-2 text-[0.95rem]">
-			<a href="/work" class="link">Work</a>
-			<span class="text-faint">·</span>
-			<a href="mailto:zmb3@illinois.edu" class="link">Email</a>
-			<span class="text-faint">·</span>
 			<a
 				href="https://www.linkedin.com/in/zacharybas/"
 				target="_blank"
