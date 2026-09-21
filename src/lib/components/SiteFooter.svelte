@@ -2,7 +2,7 @@
 	const links = [
 		{ label: 'Email', href: 'mailto:zmb3@illinois.edu' },
 		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/zacharybas/' },
-		{ label: 'GitHub', href: 'https://github.com/zachbas' }
+		{ label: 'GitHub', href: 'https://github.com/zachmb' }
 	];
 </script>
 

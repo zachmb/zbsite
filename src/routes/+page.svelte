@@ -50,7 +50,7 @@
 			>
 			<span class="text-faint">·</span>
 			<a
-				href="https://github.com/zachbas"
+				href="https://github.com/zachmb"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="link">GitHub</a

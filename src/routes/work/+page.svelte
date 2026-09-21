@@ -20,7 +20,7 @@
 			<p class="mt-2 text-[0.9rem] text-muted">
 				Things I've built and left in public. Pulled live from
 				<a
-					href="https://github.com/zachbas"
+					href="https://github.com/zachmb"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="link">GitHub</a
@@ -38,7 +38,7 @@
 			<p class="border-t border-rule py-8 text-[0.9rem] text-muted">
 				Nothing to show right now — take a look on
 				<a
-					href="https://github.com/zachbas"
+					href="https://github.com/zachmb"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="link">GitHub</a
