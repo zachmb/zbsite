@@ -1,60 +1,30 @@
-<script lang="ts">
-	import SiteHeader from '$components/SiteHeader.svelte';
-</script>
+<h1 class="mb-4 text-3xl font-bold">Zachary Basinger</h1>
 
-<div class="mx-auto w-full max-w-[640px] px-6">
-	<SiteHeader />
+<p class="mb-4">
+	I study Computer Science + Advertising at the University of Illinois
+	Urbana-Champaign, Class of 2030.
+</p>
 
-	<main>
-		<!-- Masthead -->
-		<div class="mb-10">
-			<h1 class="font-serif text-[2.6rem] leading-[1.05] tracking-[-0.02em] md:text-[3.1rem]">
-				Zachary Basinger
-			</h1>
-			<div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.8rem] text-muted">
-				<span>18</span>
-				<span class="text-faint">·</span>
-				<span>CS + Advertising, UIUC</span>
-				<span class="text-faint">·</span>
-				<a href="mailto:zmb3@illinois.edu" class="link">zmb3@illinois.edu</a>
-			</div>
-		</div>
+<p class="mb-4">
+	I like building things and leaving them in public. Most of what I make ends up
+	on <a href="https://github.com/zachmb" target="_blank" rel="noopener noreferrer">GitHub</a>.
+</p>
 
-		<!-- Photo -->
-		<figure class="mb-12">
-			<div class="flex flex-wrap items-end gap-3">
-				<img
-					src="/images/zach-young.png"
-					alt="Zachary Basinger as a kid"
-					width="220"
-					height="220"
-					class="w-[140px] rounded-[3px] border border-rule object-cover md:w-40"
-				/>
-				<img
-					src="/images/zach.png"
-					alt="Zachary Basinger"
-					width="220"
-					height="220"
-					class="w-[140px] rounded-[3px] border border-rule object-cover md:w-40"
-				/>
-			</div>
-		</figure>
+<h2 class="mt-8 mb-3 text-lg font-bold">What I'm doing now</h2>
+<ol class="mb-4 list-decimal space-y-1 pl-6">
+	<li>Studying CS + Advertising at UIUC.</li>
+	<li>Building side projects and writing essays.</li>
+</ol>
 
-		<!-- Links -->
-		<nav class="flex flex-wrap items-center gap-x-2 text-[0.95rem]">
-			<a
-				href="https://www.linkedin.com/in/zacharybas/"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="link">LinkedIn</a
-			>
-			<span class="text-faint">·</span>
-			<a
-				href="https://github.com/zachmb"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="link">GitHub</a
-			>
-		</nav>
-	</main>
-</div>
+<h2 class="mt-8 mb-3 text-lg font-bold">Links</h2>
+<ul class="mb-4 list-disc space-y-1 pl-6">
+	<li>
+		<a href="https://www.linkedin.com/in/zacharybas/" target="_blank" rel="noopener noreferrer"
+			>zacharybas</a
+		> on LinkedIn
+	</li>
+	<li>
+		<a href="https://github.com/zachmb" target="_blank" rel="noopener noreferrer">zachmb</a> on GitHub
+	</li>
+	<li><a href="mailto:zmb3@illinois.edu">zmb3@illinois.edu</a></li>
+</ul>

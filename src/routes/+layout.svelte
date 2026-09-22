@@ -1,22 +1,40 @@
 <script lang="ts">
 	import '../app.css';
+	import { page } from '$app/state';
 	import type { Snippet } from 'svelte';
 
 	type Props = { children: Snippet };
 	let { children }: Props = $props();
+
+	const nav = [
+		{ label: 'Bio', href: '/' },
+		{ label: 'Repos', href: '/repos' },
+		{ label: 'Essays', href: '/essays' }
+	];
+
+	const isActive = (href: string) =>
+		href === '/' ? page.url.pathname === '/' : page.url.pathname.startsWith(href);
 </script>
 
 <svelte:head>
 	<title>Zachary Basinger</title>
-	<meta
-		name="description"
-		content="Zachary Basinger — 18, studying Computer Science + Advertising at UIUC. I make things on the internet."
-	/>
-	<meta name="theme-color" content="#ffffff" />
-	<link
-		rel="icon"
-		href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='Georgia,serif'%3EZ%3C/text%3E%3C/svg%3E"
-	/>
+	<meta name="description" content="Zachary Basinger" />
 </svelte:head>
 
-{@render children()}
+<div class="mx-auto flex max-w-3xl gap-10 px-6 py-12">
+	<nav class="w-24 shrink-0 text-right">
+		{#each nav as item}
+			<div class="mb-2">
+				{#if isActive(item.href)}
+					<span class="font-bold text-black">{item.label}</span>
+				{:else}
+					<a href={item.href}>{item.label}</a>
+				{/if}
+			</div>
+		{/each}
+	</nav>
+
+	<main class="min-w-0 flex-1">
+		{@render children()}
+	</main>
+</div>
