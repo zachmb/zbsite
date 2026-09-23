@@ -12,8 +12,8 @@
 
 <h2 class="mt-8 mb-3 text-lg font-bold">What I'm doing now</h2>
 <ol class="mb-4 list-decimal space-y-1 pl-6">
-	<li>Studying CS + Advertising at UIUC.</li>
-	<li>Building side projects and writing essays.</li>
+	<li>Being a student at UIUC.</li>
+	<li>Building a VC-backed startup I founded.</li>
 </ol>
 
 <h2 class="mt-8 mb-3 text-lg font-bold">Links</h2>
