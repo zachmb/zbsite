@@ -9,7 +9,8 @@
 	const nav = [
 		{ label: 'Bio', href: '/' },
 		{ label: 'Repos', href: '/repos' },
-		{ label: 'Essays', href: '/essays' }
+		{ label: 'Essays', href: '/essays' },
+		{ label: 'Meditations', href: '/meditations' }
 	];
 
 	const isActive = (href: string) =>
@@ -22,7 +23,7 @@
 </svelte:head>
 
 <div class="mx-auto flex max-w-3xl gap-10 px-6 py-12">
-	<nav class="w-24 shrink-0 text-right">
+	<nav class="w-28 shrink-0 text-right">
 		{#each nav as item}
 			<div class="mb-2">
 				{#if isActive(item.href)}

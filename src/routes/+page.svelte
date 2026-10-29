@@ -1,3 +1,27 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { quotes } from '$lib/meditations-quotes';
+
+	// Show a Meditations line at the top on each load. SSR renders the first
+	// one (stable prerender), then a random pick swaps in on mount.
+	let quote = $state(quotes[0]);
+	onMount(() => {
+		quote = quotes[Math.floor(Math.random() * quotes.length)];
+	});
+</script>
+
+<figure class="mb-10 border-l-2 border-gray-300 pl-4">
+	<blockquote class="text-gray-700 italic">
+		&ldquo;{quote.text}&rdquo;
+	</blockquote>
+	<figcaption class="mt-2 text-sm text-gray-500 not-italic">
+		Marcus Aurelius,
+		<a href="/meditations?book={quote.book}"
+			>Meditations {quote.book}.{quote.section}</a
+		>
+	</figcaption>
+</figure>
+
 <h1 class="mb-4 text-3xl font-bold">Zachary Basinger</h1>
 
 <p class="mb-4">

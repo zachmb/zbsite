@@ -1,0 +1,105 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { page } from '$app/state';
+	import { replaceState } from '$app/navigation';
+	import data from '$lib/meditations.json';
+
+	const books = data.books;
+
+	// Which book is open. Initialised from ?book=N on mount so links like
+	// /meditations?book=4 (and the home-page quote citations) land correctly.
+	let current = $state(1);
+
+	const clamp = (n: number) => Math.min(books.length, Math.max(1, n));
+
+	onMount(() => {
+		const q = Number(page.url.searchParams.get('book'));
+		if (q) current = clamp(q);
+	});
+
+	const book = $derived(books.find((b) => b.number === current) ?? books[0]);
+
+	function open(n: number) {
+		current = clamp(n);
+		const url = new URL(page.url);
+		url.searchParams.set('book', String(current));
+		replaceState(url, {});
+		if (typeof window !== 'undefined') window.scrollTo({ top: 0 });
+	}
+</script>
+
+<svelte:head>
+	<title>Meditations — Marcus Aurelius</title>
+	<meta
+		name="description"
+		content="Marcus Aurelius' Meditations, the George Long translation, read in full."
+	/>
+</svelte:head>
+
+<header class="mb-6">
+	<h1 class="mb-1 text-3xl font-bold">The Meditations</h1>
+	<p class="text-gray-600">
+		Marcus Aurelius · translated by {data.translator}
+	</p>
+</header>
+
+<!-- Book selector -->
+<nav aria-label="Books" class="mb-8 border-y border-gray-200 py-3">
+	<ol class="flex flex-wrap gap-x-3 gap-y-2">
+		{#each books as b}
+			<li>
+				<button
+					type="button"
+					onclick={() => open(b.number)}
+					class="text-sm {b.number === current
+						? 'font-bold text-black'
+						: 'text-[var(--link)] hover:underline'}"
+					aria-current={b.number === current ? 'true' : undefined}
+				>
+					{b.number}
+				</button>
+			</li>
+		{/each}
+	</ol>
+</nav>
+
+<article>
+	<h2 class="mb-1 text-2xl font-bold">{book.title}</h2>
+	{#if book.dateline}
+		<p class="mb-5 text-gray-500 italic">{book.dateline}.</p>
+	{:else}
+		<div class="mb-5"></div>
+	{/if}
+
+	{#each book.sections as s}
+		<p class="mb-4 flex gap-3">
+			<span class="w-6 shrink-0 text-right text-sm text-gray-400 select-none">{s.n}</span>
+			<span class="min-w-0">{s.text}</span>
+		</p>
+	{/each}
+</article>
+
+<!-- Prev / next -->
+<nav class="mt-10 flex justify-between border-t border-gray-200 pt-4 text-sm">
+	{#if current > 1}
+		<button type="button" class="text-[var(--link)] hover:underline" onclick={() => open(current - 1)}>
+			← {books[current - 2].title}
+		</button>
+	{:else}
+		<span></span>
+	{/if}
+	{#if current < books.length}
+		<button type="button" class="text-[var(--link)] hover:underline" onclick={() => open(current + 1)}>
+			{books[current].title} →
+		</button>
+	{:else}
+		<span></span>
+	{/if}
+</nav>
+
+<p class="mt-10 text-xs text-gray-400">
+	Text: George Long translation, via
+	<a href="https://classics.mit.edu/Antoninus/meditations.html" target="_blank" rel="noopener noreferrer"
+		>The Internet Classics Archive</a
+	>.
+</p>
