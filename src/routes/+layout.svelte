@@ -22,7 +22,9 @@
 </svelte:head>
 
 <div class="mx-auto flex max-w-3xl flex-col gap-6 px-6 py-10 sm:flex-row sm:gap-10 sm:py-12">
-	<nav class="flex flex-wrap gap-x-4 gap-y-1 shrink-0 sm:block sm:w-28 sm:text-right">
+	<nav
+		class="sticky top-0 z-20 -mx-6 flex flex-wrap gap-x-4 gap-y-1 border-b border-gray-100 bg-white px-6 py-3 shrink-0 sm:static sm:z-auto sm:mx-0 sm:block sm:w-28 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:text-right"
+	>
 		{#each nav as item}
 			<div class="sm:mb-2">
 				{#if isActive(item.href)}

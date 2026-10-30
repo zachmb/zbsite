@@ -24,7 +24,19 @@
 		if (!sec) return;
 
 		await tick(); // let the selected book's paragraphs render
+
+		// Don't fight the user: if they start scrolling/touching before our
+		// programmatic scroll runs, skip it (prevents the "scroll up yanks me
+		// back down" feeling on mobile).
+		let aborted = false;
+		const cancel = () => (aborted = true);
+		addEventListener('wheel', cancel, { once: true, passive: true });
+		addEventListener('touchmove', cancel, { once: true, passive: true });
+
 		requestAnimationFrame(() => {
+			removeEventListener('wheel', cancel);
+			removeEventListener('touchmove', cancel);
+			if (aborted) return;
 			const el = document.getElementById(`s${sec}`);
 			if (!el) return;
 			el.scrollIntoView({ block: 'center' });
