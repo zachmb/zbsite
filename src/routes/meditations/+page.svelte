@@ -26,6 +26,11 @@
 		replaceState(url, {});
 		if (typeof window !== 'undefined') window.scrollTo({ top: 0 });
 	}
+
+	// Back-to-list: return to the book index at the top of the page.
+	function backToList() {
+		if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
 </script>
 
 <svelte:head>
@@ -72,29 +77,35 @@
 	{/if}
 
 	{#each book.sections as s}
-		<p class="mb-4 flex gap-3">
-			<span class="w-6 shrink-0 text-right text-sm text-gray-400 select-none">{s.n}</span>
-			<span class="min-w-0">{s.text}</span>
-		</p>
+		<p class="mb-4"><b>{s.n}.</b> {s.text}</p>
 	{/each}
 </article>
 
-<!-- Prev / next -->
-<nav class="mt-10 flex justify-between border-t border-gray-200 pt-4 text-sm">
-	{#if current > 1}
-		<button type="button" class="text-[var(--link)] hover:underline" onclick={() => open(current - 1)}>
-			← {books[current - 2].title}
-		</button>
-	{:else}
-		<span></span>
-	{/if}
-	{#if current < books.length}
-		<button type="button" class="text-[var(--link)] hover:underline" onclick={() => open(current + 1)}>
-			{books[current].title} →
-		</button>
-	{:else}
-		<span></span>
-	{/if}
+<!-- Prev / back-to-list / next -->
+<nav class="mt-10 flex flex-wrap items-center gap-3 border-t border-gray-200 pt-4">
+	<button
+		type="button"
+		class="border border-gray-400 px-3 py-1 font-bold disabled:opacity-40 disabled:cursor-not-allowed"
+		disabled={current === 1}
+		onclick={() => open(current - 1)}
+	>
+		← Previous
+	</button>
+	<button
+		type="button"
+		class="border border-gray-400 px-3 py-1 font-bold"
+		onclick={backToList}
+	>
+		Back to list
+	</button>
+	<button
+		type="button"
+		class="border border-gray-400 px-3 py-1 font-bold disabled:opacity-40 disabled:cursor-not-allowed"
+		disabled={current === books.length}
+		onclick={() => open(current + 1)}
+	>
+		Next →
+	</button>
 </nav>
 
 <p class="mt-10 text-xs text-gray-400">

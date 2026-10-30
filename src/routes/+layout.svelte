@@ -18,7 +18,6 @@
 </script>
 
 <svelte:head>
-	<title>Zachary Basinger</title>
 	<meta name="description" content="Zachary Basinger" />
 </svelte:head>
 
