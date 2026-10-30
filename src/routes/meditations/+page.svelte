@@ -27,9 +27,12 @@
 		if (typeof window !== 'undefined') window.scrollTo({ top: 0 });
 	}
 
-	// Back-to-list: return to the book index at the top of the page.
-	function backToList() {
-		if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+	// Jump to a random book (never the one already open).
+	function random() {
+		if (books.length < 2) return open(1);
+		let n = current;
+		while (n === current) n = Math.floor(Math.random() * books.length) + 1;
+		open(n);
 	}
 </script>
 
@@ -42,14 +45,14 @@
 </svelte:head>
 
 <header class="mb-6">
-	<h1 class="mb-1 text-3xl font-bold">The Meditations</h1>
+	<h1 class="mb-1 text-3xl font-bold">Meditations</h1>
 	<p class="text-gray-600">
 		Marcus Aurelius · translated by {data.translator}
 	</p>
 </header>
 
 <!-- Book selector + navigation -->
-<nav aria-label="Books" class="mb-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-y border-gray-200 py-3">
+<nav aria-label="Books" class="mb-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-gray-200 py-3">
 	<ol class="flex flex-wrap gap-x-3 gap-y-2">
 		{#each books as b}
 			<li>
@@ -76,8 +79,8 @@
 		>
 			← Previous
 		</button>
-		<button type="button" class="border border-gray-400 px-3 py-1 font-bold" onclick={backToList}>
-			Back to list
+		<button type="button" class="border border-gray-400 px-3 py-1 font-bold" onclick={random}>
+			Random
 		</button>
 		<button
 			type="button"
