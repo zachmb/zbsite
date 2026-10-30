@@ -8,6 +8,14 @@
 	onMount(() => {
 		quote = quotes[Math.floor(Math.random() * quotes.length)];
 	});
+
+	// Swap in a different random quote (never the one already shown).
+	function refresh() {
+		if (quotes.length < 2) return;
+		let q = quote;
+		while (q === quote) q = quotes[Math.floor(Math.random() * quotes.length)];
+		quote = q;
+	}
 </script>
 
 <svelte:head>
@@ -22,6 +30,13 @@
 		Marcus Aurelius,
 		<a href="/meditations?book={quote.book}&section={quote.section}"
 			>Meditations {quote.book}.{quote.section}</a
+		>
+		<button
+			type="button"
+			onclick={refresh}
+			class="ml-1 text-[var(--link)] hover:underline"
+			aria-label="Show another quote"
+			title="Another quote">↻</button
 		>
 	</figcaption>
 </figure>
