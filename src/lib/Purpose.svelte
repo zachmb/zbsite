@@ -4,7 +4,7 @@
 	let { children }: { children: import('svelte').Snippet } = $props();
 </script>
 
-<p class="mb-6 text-sm text-gray-500">
-	<b class="text-gray-700">The Purpose:</b>
+<p class="mb-6">
+	<b>The Purpose:</b>
 	{@render children()}
 </p>

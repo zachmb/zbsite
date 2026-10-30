@@ -94,7 +94,7 @@
 				class="text-left {i === current ? 'font-bold text-black' : 'text-[var(--link)] hover:underline'}"
 				onclick={() => open(i)}
 			>
-				{w.author} — {w.title}
+				{w.author}: {w.title}
 			</button>
 		</li>
 	{/each}

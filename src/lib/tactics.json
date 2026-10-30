@@ -1,21 +1,21 @@
 {
 	"title": "Tactics",
-	"note": "A field guide to combat-tested leadership. These are original summaries of the ideas — read the books and listen to the source material for the real thing.",
+	"note": "A field guide to combat-tested leadership. These are original summaries of the ideas. Read the books and listen to the source material for the real thing.",
 	"works": [
 		{
 			"id": "extreme-ownership",
 			"author": "after Jocko Willink & Leif Babin",
-			"title": "Extreme Ownership — The Principles",
+			"title": "Extreme Ownership: The Principles",
 			"sourceUrl": "https://echelonfront.com/extreme-ownership/",
 			"sections": [
-				{ "n": 1, "text": "Extreme Ownership. The leader owns everything in their world. There is no one else to blame — not the market, not the team, not bad luck. When something fails, the leader looks first at what they did or failed to do, fixes that, and moves on. Owning the problem is the only position from which you can actually solve it." },
-				{ "n": 2, "text": "There are no bad teams, only bad leaders. The same group of people performs differently under different leadership. Standards are not what you preach; they are what you tolerate. If the bar is low, raise it and hold it — the team rises to meet the standard a leader truly enforces." },
+				{ "n": 1, "text": "Extreme Ownership. The leader owns everything in their world. There is no one else to blame: not the market, not the team, not bad luck. When something fails, the leader looks first at what they did or failed to do, fixes that, and moves on. Owning the problem is the only position from which you can actually solve it." },
+				{ "n": 2, "text": "There are no bad teams, only bad leaders. The same group of people performs differently under different leadership. Standards are not what you preach; they are what you tolerate. If the bar is low, raise it and hold it. The team rises to meet the standard a leader truly enforces." },
 				{ "n": 3, "text": "Believe. A leader must understand and believe in the mission to lead others toward it with conviction. If you do not believe, ask why up the chain until you do. Doubt is contagious, and so is belief." },
 				{ "n": 4, "text": "Check the ego. Ego clouds judgment, blocks feedback, and breaks teams. The confident leader stays humble enough to be corrected, to admit error fast, and to put the mission above the need to be right." },
 				{ "n": 5, "text": "Cover and move. Teamwork. Every element, every department, exists to support the others toward the overall mission. Silos and turf wars are the enemy. Help the team next to you and the whole machine wins." },
 				{ "n": 6, "text": "Keep it simple. Plans and orders must be clear, concise, and understood by everyone who has to execute them. Complexity compounds under pressure. If people cannot grasp it, they cannot do it when it is hard." },
 				{ "n": 7, "text": "Prioritize and execute. When everything is falling apart, you cannot fix it all at once. Detach, determine the highest priority, direct effort there, execute, then move to the next. Relax, look around, make a call." },
-				{ "n": 8, "text": "Decentralized command. No one leader can control everything. Push decision-making down to the people closest to the problem — they must know the mission and the intent so they can act without waiting for orders." },
+				{ "n": 8, "text": "Decentralized command. No one leader can control everything. Push decision-making down to the people closest to the problem. They must know the mission and the intent so they can act without waiting for orders." },
 				{ "n": 9, "text": "Plan. A good plan names the mission, anticipates what can go wrong, builds contingencies, and is briefed so the most junior person understands it. Then you debrief honestly afterward and get better." },
 				{ "n": 10, "text": "Lead up and down the chain of command. Down: explain the why so your team can execute with judgment. Up: give your bosses the information and recommendations they need to support you. If they are not giving you what you need, it is your job to communicate better, not to complain." },
 				{ "n": 11, "text": "Decisiveness amid uncertainty. You will never have perfect information. Make the best decision you can with what you have, commit, and adjust as reality reveals itself. Indecision is itself a decision, and usually the worst one." },
@@ -25,7 +25,7 @@
 		{
 			"id": "dichotomy-of-leadership",
 			"author": "after Jocko Willink & Leif Babin",
-			"title": "The Dichotomy of Leadership — Balances",
+			"title": "The Dichotomy of Leadership: Balances",
 			"sourceUrl": "https://echelonfront.com/the-dichotomy-of-leadership/",
 			"sections": [
 				{ "n": 1, "text": "Care without coddling. A leader must care deeply about their people and still hold them to the standard. Too little care loses the team; too much, and you fail to prepare them for what is real." },
@@ -39,7 +39,7 @@
 		{
 			"id": "field-maxims",
 			"author": "in the spirit of Jocko Willink",
-			"title": "Discipline Equals Freedom — Field Maxims",
+			"title": "Discipline Equals Freedom: Field Maxims",
 			"sourceUrl": "https://jockopodcast.com/",
 			"sections": [
 				{ "n": 1, "text": "When you do not feel like it is exactly when it counts. Motivation is unreliable; discipline is not. Go anyway." },
@@ -47,13 +47,13 @@
 				{ "n": 3, "text": "Good. Whatever goes wrong, find the opening in it. A setback is information and an opportunity to adapt." },
 				{ "n": 4, "text": "Detach to see clearly. Step back from the chaos, lift your head, take in the whole board, then decide. You cannot lead from inside the panic." },
 				{ "n": 5, "text": "Discipline in the small things is rehearsal for the large ones. How you do anything is how you will do the thing that matters." },
-				{ "n": 6, "text": "Default aggressive. When unsure, move, act, take the initiative — then correct. Passivity surrenders the decision to someone else." }
+				{ "n": 6, "text": "Default aggressive. When unsure, move, act, take the initiative, then correct. Passivity surrenders the decision to someone else." }
 			]
 		},
 		{
 			"id": "seal-ethos",
-			"author": "U.S. Navy (public domain) — summarized",
-			"title": "The Warrior Ethos — Themes of the SEAL Ethos",
+			"author": "U.S. Navy (public domain), summarized",
+			"title": "The Warrior Ethos: Themes of the SEAL Ethos",
 			"sourceUrl": "https://www.nsw.navy.mil/NSW/SEAL-Ethos/",
 			"sections": [
 				{ "n": 1, "text": "The standard is quiet professionalism. You do not seek recognition; you earn trust by being reliable when it is hard. The reputation is built in the work, not the talk." },
