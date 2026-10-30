@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { page } from '$app/state';
 	import { replaceState } from '$app/navigation';
 	import data from '$lib/meditations.json';
@@ -9,20 +9,35 @@
 	// Which book is open. Initialised from ?book=N on mount so links like
 	// /meditations?book=4 (and the home-page quote citations) land correctly.
 	let current = $state(1);
+	// Section to scroll to / briefly highlight on a ?section=N deep link.
+	let highlighted = $state(0);
 
 	const clamp = (n: number) => Math.min(books.length, Math.max(1, n));
 
-	onMount(() => {
+	onMount(async () => {
 		const q = Number(page.url.searchParams.get('book'));
 		if (q) current = clamp(q);
+
+		const sec = Number(page.url.searchParams.get('section'));
+		if (sec) {
+			await tick(); // wait for the book's paragraphs to render
+			const el = document.getElementById(`s${sec}`);
+			if (el) {
+				el.scrollIntoView({ block: 'center' });
+				highlighted = sec;
+				setTimeout(() => (highlighted = 0), 2000);
+			}
+		}
 	});
 
 	const book = $derived(books.find((b) => b.number === current) ?? books[0]);
 
 	function open(n: number) {
 		current = clamp(n);
+		highlighted = 0;
 		const url = new URL(page.url);
 		url.searchParams.set('book', String(current));
+		url.searchParams.delete('section');
 		replaceState(url, {});
 		if (typeof window !== 'undefined') window.scrollTo({ top: 0 });
 	}
@@ -102,7 +117,14 @@
 	{/if}
 
 	{#each book.sections as s}
-		<p class="mb-4"><b>{s.n}.</b> {s.text}</p>
+		<p
+			id="s{s.n}"
+			class="mb-4 -mx-2 rounded px-2 transition-colors duration-500 {highlighted === s.n
+				? 'bg-gray-100'
+				: ''}"
+		>
+			<b>{s.n}.</b> {s.text}
+		</p>
 	{/each}
 </article>
 

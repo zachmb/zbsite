@@ -20,7 +20,7 @@
 	</blockquote>
 	<figcaption class="mt-2 text-sm text-gray-500 not-italic">
 		Marcus Aurelius,
-		<a href="/meditations?book={quote.book}"
+		<a href="/meditations?book={quote.book}&section={quote.section}"
 			>Meditations {quote.book}.{quote.section}</a
 		>
 	</figcaption>
