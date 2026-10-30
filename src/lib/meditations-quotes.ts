@@ -1,57 +1,107 @@
-// A small curated set of concise lines from the Meditations (George Long
-// translation), shown at the top of the home page. Each links back to its
-// book in the /meditations viewer. Text is verbatim from src/lib/meditations.json.
+// Marcus Aurelius, Meditations (George Long translation). Pulled from
+// src/lib/meditations.json with correct book/section; shown at the top of the
+// Bio page, each deep-linking to its section in /meditations.
 export type Quote = { text: string; book: number; section: number };
 
 export const quotes: Quote[] = [
-	{
-		text: 'Such as are thy habitual thoughts, such also will be the character of thy mind; for the soul is dyed by the thoughts.',
-		book: 5,
-		section: 16
-	},
-	{
-		text: 'No longer talk at all about the kind of man that a good man ought to be, but be such.',
-		book: 10,
-		section: 18
-	},
-	{
-		text: 'Be like the promontory against which the waves continually break, but it stands firm and tames the fury of the water around it.',
-		book: 4,
-		section: 51
-	},
-	{
-		text: 'Confine thyself to the present.',
-		book: 7,
-		section: 29
-	},
-	{
-		text: 'Observe constantly that all things take place by change, and accustom thyself to consider that the nature of the Universe loves nothing so much as to change the things which are and to make new things like them.',
-		book: 4,
-		section: 38
-	},
-	{
-		text: 'Think not so much of what thou hast not as of what thou hast: but of the things which thou hast select the best, and then reflect how eagerly they would have been sought, if thou hadst them not.',
-		book: 7,
-		section: 27
-	},
-	{
-		text: 'Everything which is in any way beautiful is beautiful in itself, and terminates in itself, not having praise as part of itself.',
-		book: 4,
-		section: 21
-	},
-	{
-		text: 'Loss is nothing else than change.',
-		book: 9,
-		section: 36
-	},
-	{
-		text: 'Hasten then to the end which thou hast before thee, and throwing away idle hopes, come to thy own aid, if thou carest at all for thyself, while it is in thy power.',
-		book: 3,
-		section: 14
-	},
-	{
-		text: 'Remember to retire into this little territory of thy own, and above all do not distract or strain thyself, but be free, and look at things as a man, as a human being, as a citizen, as a mortal.',
-		book: 4,
-		section: 4
-	}
+	{ text: 'All these things happen to them by reason of their ignorance of what is good and evil.', book: 2, section: 1 },
+	{ text: 'Let these principles be enough for thee, let them always be fixed opinions.', book: 2, section: 3 },
+	{ text: 'Remember how long thou hast been putting off these things, and how often thou hast received an opportunity from the gods, and yet dost not use it.', book: 2, section: 4 },
+	{ text: 'Do wrong to thyself, do wrong to thyself, my soul; but thou wilt no longer have the opportunity of honouring thyself.', book: 2, section: 6 },
+	{ text: 'Every man’s life is sufficient.', book: 2, section: 6 },
+	{ text: 'Give thyself time to learn something new and good, and cease to be whirled around.', book: 2, section: 7 },
+	{ text: 'Since it is possible that thou mayest depart from life this very moment, regulate every act and thought accordingly.', book: 2, section: 11 },
+	{ text: 'To observe too how man comes near to the deity, and by what part of him, and when this part of man is so disposed.', book: 2, section: 12 },
+	{ text: 'Remember that all is opinion.', book: 2, section: 15 },
+	{ text: 'Thou hast embarked, thou hast made the voyage, thou art come to shore; get out.', book: 3, section: 3 },
+	{ text: 'Do not waste the remainder of thy life in thoughts about others, when thou dost not refer thy thoughts to some object of common utility.', book: 3, section: 4 },
+	{ text: 'A man then must stand erect, not be kept erect by others.', book: 3, section: 5 },
+	{ text: 'Be cheerful also, and seek not external help nor the tranquility which others give.', book: 3, section: 5 },
+	{ text: 'Reverence the faculty which produces opinion.', book: 3, section: 9 },
+	{ text: 'Let no act be done without a purpose, nor otherwise than according to the perfect principles of art.', book: 4, section: 2 },
+	{ text: 'The universe is transformation: life is opinion.', book: 4, section: 4 },
+	{ text: 'Do not act as if thou wert going to live ten thousand years.', book: 4, section: 18 },
+	{ text: 'Everything which is in any way beautiful is beautiful in itself, and terminates in itself, not having praise as part of itself.', book: 4, section: 21 },
+	{ text: 'Everything harmonizes with me, which is harmonious to thee, O Universe.', book: 4, section: 25 },
+	{ text: 'Nothing for me is too early nor too late, which is in due time for thee.', book: 4, section: 25 },
+	{ text: 'Thou must turn to profit the present by the aid of reason and justice.', book: 4, section: 28 },
+	{ text: 'Everything is only for a day, both that which remembers and that which is remembered.', book: 4, section: 37 },
+	{ text: 'It is no evil for things to undergo change, and no good for things to subsist in consequence of change.', book: 4, section: 44 },
+	{ text: 'Be like the promontory against which the waves continually break, but it stands firm and tames the fury of the water around it.', book: 4, section: 51 },
+	{ text: 'No, by the gods: but thou mightest have been delivered from these things long ago.', book: 5, section: 5 },
+	{ text: 'Let the perfecting and accomplishment of the things, which the common nature judges to be good, be judged by thee to be of the same kind as thy health.', book: 5, section: 8 },
+	{ text: 'They are not required of a man, nor does man’s nature promise them, nor are they the means of man’s nature attaining its end.', book: 5, section: 15 },
+	{ text: 'None of these things ought to be called a man’s, which do not belong to a man, as man.', book: 5, section: 15 },
+	{ text: 'Such as are thy habitual thoughts, such also will be the character of thy mind; for the soul is dyed by the thoughts.', book: 5, section: 16 },
+	{ text: 'To seek what is impossible is madness: and it is impossible that the bad should not do something of this kind.', book: 5, section: 17 },
+	{ text: 'Nothing happens to any man which he is not formed by nature to bear.', book: 5, section: 18 },
+	{ text: 'Reverence that which is best in the universe; and this is that which makes use of all things and directs all things.', book: 5, section: 21 },
+	{ text: 'Never has wronged a man in deed or word.', book: 5, section: 32 },
+	{ text: 'Thou canst pass thy life in an equable flow of happiness, if thou canst go by the right way, and think and act in the right way.', book: 5, section: 38 },
+	{ text: 'Let neither the peculiar quality of anything nor its value escape thee.', book: 6, section: 3 },
+	{ text: 'The reason which governs knows what its own disposition is, and what it does, and on what material it works.', book: 6, section: 5 },
+	{ text: 'The best way of avenging thyself is not to become like the wrong doer.', book: 6, section: 6 },
+	{ text: 'Take pleasure in one thing and rest in it, in passing from one social act to another social act, thinking of God.', book: 6, section: 7 },
+	{ text: 'It is a shame for the soul to be first to give way in this life, when thy body does not give way.', book: 6, section: 29 },
+	{ text: 'How many pleasures have been enjoyed by robbers, patricides, tyrants.', book: 6, section: 34 },
+	{ text: 'Adapt thyself to the things with which thy lot has been cast: and the men among whom thou hast received thy portion, love them, but do it truly, sincerely.', book: 6, section: 39 },
+	{ text: 'Thou art not dissatisfied, I suppose, because thou weighest only so many litrae and not three hundred.', book: 6, section: 48 },
+	{ text: 'Accustom thyself to attend carefully to what is said by another, and as much as it is possible, be in the speaker’s mind.', book: 6, section: 52 },
+	{ text: 'No man will hinder thee from living according to the reason of thy own nature: nothing will happen to thee contrary to the reason of the universal nature.', book: 6, section: 57 },
+	{ text: 'Look at things again as thou didst use to look at them; for in this consists the recovery of thy life.', book: 7, section: 2 },
+	{ text: 'Be not ashamed to be helped; for it is thy business to do thy duty like a soldier in the assault on a town.', book: 7, section: 7 },
+	{ text: 'When a man has done thee any wrong, immediately consider with what opinion about good or evil he has done wrong.', book: 7, section: 26 },
+	{ text: 'Confine thyself to the present.', book: 7, section: 29 },
+	{ text: 'Let the wrong which is done by a man stay there where the wrong was done.', book: 7, section: 29 },
+	{ text: 'No joining others in their wailing, no violent emotion.', book: 7, section: 42 },
+	{ text: 'Consider thyself to be dead, and to have completed thy life up to the present time; and live according to nature the remainder which is allowed thee.', book: 7, section: 57 },
+	{ text: 'When then thou art discontented about any of these things, say to thyself, that thou art yielding to pain.', book: 7, section: 65 },
+	{ text: 'Take care not to feel towards the inhuman, as they feel towards men.', book: 7, section: 66 },
+	{ text: 'Always bear this in mind; and another thing too, that very little indeed is necessary for living a happy life.', book: 7, section: 68 },
+	{ text: 'Consider that men will do the same things nevertheless, even though thou shouldst burst.', book: 8, section: 4 },
+	{ text: 'Thou hast not leisure [or ability] to read.', book: 8, section: 8 },
+	{ text: 'Let no man any longer hear thee finding fault with the court life or with thy own.', book: 8, section: 9 },
+	{ text: 'Remember that to change thy opinion and to follow him who corrects thy error is as consistent with freedom as it is to persist in thy error.', book: 8, section: 16 },
+	{ text: 'Thou sufferest this justly: for thou choosest rather to become good tomorrow than to be good today.', book: 8, section: 24 },
+	{ text: 'Receive wealth or prosperity without arrogance; and be ready to let it go.', book: 8, section: 35 },
+	{ text: 'Do not disturb thyself by thinking of the whole of thy life.', book: 8, section: 38 },
+	{ text: 'Let then the reason itself not trouble itself.', book: 8, section: 42 },
+	{ text: 'Men exist for the sake of one another.', book: 8, section: 62 },
+	{ text: 'Enter into every man’s ruling faculty; and also let every other man enter into thine.', book: 8, section: 64 },
+	{ text: 'Do not despise death, but be well content with it, since this too is one of those things which nature wills.', book: 9, section: 3 },
+	{ text: 'Wipe out imagination; check desire; extinguish appetite; keep the ruling faculty in its own power.', book: 9, section: 7 },
+	{ text: 'Everything now is just as it was in the time of those whom we have buried.', book: 9, section: 14 },
+	{ text: 'It is thy duty to leave another man’s wrongful act there where it is.', book: 9, section: 20 },
+	{ text: 'Thou wilt discover that there is no reason to take any trouble that these men may have this or that opinion about thee.', book: 9, section: 27 },
+	{ text: 'When they think that they do harm by their blame or good by their praise, what an idea!', book: 9, section: 35 },
+	{ text: 'Loss is nothing else than change.', book: 9, section: 36 },
+	{ text: 'Begin, then, to pray for such things, and thou wilt see.', book: 9, section: 41 },
+	{ text: 'Consider whether thou shouldst not rather blame thyself, because thou didst not expect such a man to err in such a way.', book: 9, section: 43 },
+	{ text: 'Do not, then, require what is impossible.', book: 9, section: 43 },
+	{ text: 'Everything which happens either happens in such wise as thou art formed by nature to bear it, or as thou art not formed by nature to bear it.', book: 10, section: 4 },
+	{ text: 'Let men see, let them know a real man who lives according to nature.', book: 10, section: 17 },
+	{ text: 'Short is the little which remains to thee of life.', book: 10, section: 17 },
+	{ text: 'No longer talk at all about the kind of man that a good man ought to be, but be such.', book: 10, section: 18 },
+	{ text: 'Consider what men are when they are eating, sleeping, generating, easing themselves and so forth.', book: 10, section: 21 },
+	{ text: 'A man deposits seed in a womb and goes away, and then another cause takes it, and labours on it and makes a child.', book: 10, section: 28 },
+	{ text: 'Imagine every man who is grieved at anything or discontented to be like a pig which is sacrificed and kicks and screams.', book: 10, section: 30 },
+	{ text: 'Severally on the occasion of everything that thou doest, pause and ask thyself, if death is a dreadful thing because it deprives thee of this.', book: 10, section: 32 },
+	{ text: 'A little time, and thou shalt close thy eyes; and him who has attended thee to thy grave another soon will lament.', book: 10, section: 39 },
+	{ text: 'Let this always be present to thy mind, and never stop doing such good.', book: 11, section: 4 },
+	{ text: 'We must not chafe and fret at that which happens.', book: 11, section: 9 },
+	{ text: 'Life’s harvest reap like the wheat’s fruitful ear.', book: 11, section: 11 },
+	{ text: 'Men despise one another and flatter one another; and men wish to raise themselves above one another, and crouch before one another.', book: 11, section: 22 },
+	{ text: 'Nothing is more disgraceful than a wolfish friendship [false friendship].', book: 11, section: 23 },
+	{ text: 'Sixth, consider when thou art much vexed or grieved, that man’s life is only a moment, and after a short time we are all laid out dead.', book: 11, section: 31 },
+	{ text: 'Think of the country mouse and of the town mouse, and of the alarm and trepidation of the town mouse.', book: 11, section: 40 },
+	{ text: 'To look for the fig in winter is a madman’s act: such is he who looks for his child when it is no longer allowed.', book: 11, section: 50 },
+	{ text: 'No man can rob us of our free will.', book: 11, section: 53 },
+	{ text: 'The dispute then, he said, is not about any common matter, but about being mad or not.', book: 11, section: 54 },
+	{ text: 'See what things are in themselves, dividing them into matter, form and purpose.', book: 12, section: 13 },
+	{ text: 'What a power man has to do nothing except what God will approve, and to accept all that God may give him.', book: 12, section: 14 },
+	{ text: 'How ridiculous and what a stranger he is who is surprised at anything which happens in life.', book: 12, section: 16 },
+	{ text: 'Consider that before long thou wilt be nobody and nowhere, nor will any of the things exist which thou now seest, nor any of those who are now living.', book: 12, section: 24 },
+	{ text: 'Consider that everything is opinion, and opinion is in thy power.', book: 12, section: 25 },
+	{ text: 'Cast away opinion: thou art saved.', book: 12, section: 28 },
+	{ text: 'This reflection is most adapted to move us to contempt of death, that even those who think pleasure to be a good and pain an evil still have despised it.', book: 12, section: 37 },
 ];

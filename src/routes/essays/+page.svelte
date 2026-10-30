@@ -19,7 +19,7 @@
 	{#each essays as e}
 		<li>
 			<a href="/essays/{e.slug}">{e.title}</a>
-			<span class="text-sm">· {fmt(e.date)}{e.kind === 'poem' ? ' · poem' : ''}</span>
+			<span class="text-sm">· {fmt(e.date)}{e.kind !== 'essay' ? ` · ${e.kind}` : ''}</span>
 		</li>
 	{/each}
 	<li>

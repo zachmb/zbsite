@@ -17,6 +17,6 @@
 <p class="mb-6 text-sm"><a href="/essays">← Essays</a></p>
 
 <h1 class="mb-1 text-3xl font-bold">{essay.title}</h1>
-<p class="mb-6 text-sm">{fmt(essay.date)}{essay.kind === 'poem' ? ' · poem' : ''}</p>
+<p class="mb-6 text-sm">{fmt(essay.date)}{essay.kind !== 'essay' ? ` · ${essay.kind}` : ''}</p>
 
 <div class="max-w-prose leading-relaxed whitespace-pre-wrap">{essay.body}</div>
