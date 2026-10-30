@@ -1,98 +1,99 @@
-// Parses the George Long translation of Marcus Aurelius' Meditations
-// (sourced from The Internet Classics Archive, classics.mit.edu) into
-// structured JSON consumed by the /meditations viewer page.
+// Builds src/lib/meditations.json — the George Long translation of Marcus
+// Aurelius' Meditations with the correct, canonical section numbering.
 //
-// Usage: node scripts/build-meditations.mjs /tmp/meditations.txt
+// Source: the Standard Ebooks edition of the George Long translation
+// (https://standardebooks.org/ebooks/marcus-aurelius/meditations/george-long),
+// vendored alongside this script as standardebooks-meditations.html. Standard
+// Ebooks preserves George Long's own sectioning — each numbered entry is one
+// paragraph — which the raw classics.mit.edu text did not (it put single
+// sentences on their own lines, over-splitting sections). Each <p> inside a
+// book becomes one numbered section; the two "where-written" datelines
+// ("Among the Quadi at the Granua", "This in Carnuntum") head Books 2 and 3.
+//
+// Usage: node scripts/build-meditations.mjs [path-to-standardebooks-html]
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const srcPath = process.argv[2] ?? '/tmp/meditations.txt';
+const srcPath = process.argv[2] ?? resolve(__dirname, 'standardebooks-meditations.html');
 const outPath = resolve(__dirname, '../src/lib/meditations.json');
 
-const BOOK_WORDS = [
-	'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX',
-	'SEVEN', 'EIGHT', 'NINE', 'TEN', 'ELEVEN', 'TWELVE'
+const ORDINAL = [
+	'One', 'Two', 'Three', 'Four', 'Five', 'Six',
+	'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'
 ];
 
-const raw = await readFile(srcPath, 'utf8');
-// Normalize line endings.
-const text = raw.replace(/\r\n/g, '\n');
-const lines = text.split('\n');
+const NAMED = {
+	amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
+	mdash: '—', ndash: '–', hellip: '…',
+	lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”'
+};
 
-// Find each "BOOK <WORD>" marker line index.
-const markers = [];
-lines.forEach((line, i) => {
-	const m = line.trim().match(/^BOOK\s+([A-Z]+)$/);
-	if (m && BOOK_WORDS.includes(m[1])) {
-		markers.push({ word: m[1], line: i, num: BOOK_WORDS.indexOf(m[1]) + 1 });
-	}
-});
-
-// Locate the end of the final book (before "THE END").
-const endIdx = lines.findIndex((l) => l.trim() === 'THE END');
-
-const books = markers.map((marker, idx) => {
-	const start = marker.line + 1;
-	const stop = idx + 1 < markers.length ? markers[idx + 1].line : (endIdx === -1 ? lines.length : endIdx);
-	const body = lines.slice(start, stop);
-
-	// Split into paragraphs on blank lines; collapse soft-wrapped lines
-	// within a paragraph into a single space-joined string.
-	const paragraphs = [];
-	let current = [];
-	const flush = () => {
-		if (current.length) {
-			const joined = current.join(' ').replace(/\s+/g, ' ').trim();
-			// Skip divider lines (rows of dashes/underscores) that separate books.
-			const isDivider = joined.length > 0 && /^[-_=\s]+$/.test(joined);
-			if (joined && !isDivider) paragraphs.push(joined);
-			current = [];
+function decode(s) {
+	return s.replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (m, ent) => {
+		if (ent[0] === '#') {
+			const code = ent[1] === 'x' || ent[1] === 'X'
+				? parseInt(ent.slice(2), 16)
+				: parseInt(ent.slice(1), 10);
+			return Number.isFinite(code) ? String.fromCodePoint(code) : m;
 		}
-	};
-	for (const line of body) {
-		if (line.trim() === '') flush();
-		else current.push(line.trim());
-	}
-	flush();
+		return ent in NAMED ? NAMED[ent] : m;
+	});
+}
 
-	return {
-		number: marker.num,
-		title: `Book ${titleCase(marker.word)}`,
-		dateline: null,
-		sections: paragraphs.map((text, i) => ({ n: i + 1, text }))
-	};
-});
+const html = await readFile(srcPath, 'utf8');
 
-// The source text places the composition datelines ("Among the Quadi at the
-// Granua.", "This in Carnuntum.") at the end of the PRECEDING book. The
-// canonical edition shows them as a heading atop their own book — move them.
+function bookParagraphs(n) {
+	const start = html.indexOf(`id="book-${n}"`);
+	const stop = n < 12 ? html.indexOf(`id="book-${n + 1}"`) : html.indexOf('id="endnotes"');
+	const chunk = html.slice(start, stop);
+	const paras = [...chunk.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) => {
+		let p = m[1];
+		p = p.replace(/<a\b[^>]*epub:type="noteref"[^>]*>.*?<\/a>/g, ''); // drop endnote refs
+		p = p.replace(/<[^>]+>/g, ' '); // strip remaining tags
+		p = decode(p).replace(/\s+/g, ' ').trim();
+		return p;
+	});
+	return paras.filter(Boolean);
+}
+
+const books = ORDINAL.map((word, idx) => ({
+	number: idx + 1,
+	title: `Book ${word}`,
+	dateline: null,
+	sections: bookParagraphs(idx + 1)
+}));
+
+// The two composition datelines sit as the final paragraph of Books 1 and 2
+// in the source; George Long places them as headings of Books 2 and 3.
+const stripDot = (s) => s.replace(/\.$/, '');
 for (let i = 0; i < books.length - 1; i++) {
 	const last = books[i].sections.at(-1);
-	// Datelines are terse location notes (<= 40 chars); real sections run long.
-	if (last && last.text.length <= 40) {
+	if (last && last.length <= 40) {
 		books[i].sections.pop();
-		books[i + 1].dateline = last.text.replace(/\.$/, '');
-		books[i].sections.forEach((s, j) => (s.n = j + 1));
+		books[i + 1].dateline = stripDot(last);
 	}
 }
 
-function titleCase(word) {
-	return word.charAt(0) + word.slice(1).toLowerCase();
+// Number sections 1..N within each book.
+for (const b of books) {
+	b.sections = b.sections.map((text, i) => ({ n: i + 1, text }));
 }
-
-const totalSections = books.reduce((acc, b) => acc + b.sections.length, 0);
 
 const data = {
 	title: 'The Meditations',
 	author: 'Marcus Aurelius',
 	translator: 'George Long',
-	source: 'The Internet Classics Archive — classics.mit.edu/Antoninus/meditations.html',
+	source: 'Standard Ebooks — George Long translation (standardebooks.org/ebooks/marcus-aurelius/meditations/george-long)',
 	books
 };
 
 await writeFile(outPath, JSON.stringify(data, null, '\t') + '\n', 'utf8');
+
+const total = books.reduce((a, b) => a + b.sections.length, 0);
 console.log(`Wrote ${outPath}`);
-console.log(`Books: ${books.length}, sections: ${totalSections}`);
-books.forEach((b) => console.log(`  ${b.title}: ${b.sections.length} sections`));
+console.log(`Books: ${books.length}, sections: ${total}`);
+for (const b of books) {
+	console.log(`  ${b.title}: ${b.sections.length}${b.dateline ? ` (dateline: ${b.dateline})` : ''}`);
+}

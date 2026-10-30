@@ -7,7 +7,7 @@ export const quotes: Quote[] = [
 	{
 		text: 'Such as are thy habitual thoughts, such also will be the character of thy mind; for the soul is dyed by the thoughts.',
 		book: 5,
-		section: 17
+		section: 16
 	},
 	{
 		text: 'No longer talk at all about the kind of man that a good man ought to be, but be such.',
@@ -22,7 +22,7 @@ export const quotes: Quote[] = [
 	{
 		text: 'Confine thyself to the present.',
 		book: 7,
-		section: 28
+		section: 29
 	},
 	{
 		text: 'Observe constantly that all things take place by change, and accustom thyself to consider that the nature of the Universe loves nothing so much as to change the things which are and to make new things like them.',
@@ -32,7 +32,7 @@ export const quotes: Quote[] = [
 	{
 		text: 'Think not so much of what thou hast not as of what thou hast: but of the things which thou hast select the best, and then reflect how eagerly they would have been sought, if thou hadst them not.',
 		book: 7,
-		section: 26
+		section: 27
 	},
 	{
 		text: 'Everything which is in any way beautiful is beautiful in itself, and terminates in itself, not having praise as part of itself.',
