@@ -1,33 +1,36 @@
 <script lang="ts">
-	import { onMount, tick } from 'svelte';
+	import { tick } from 'svelte';
 	import { page } from '$app/state';
-	import { replaceState } from '$app/navigation';
+	import { replaceState, afterNavigate } from '$app/navigation';
 	import data from '$lib/meditations.json';
 
 	const books = data.books;
 
-	// Which book is open. Initialised from ?book=N on mount so links like
-	// /meditations?book=4 (and the home-page quote citations) land correctly.
+	// Which book is open. Set from ?book=N so links like /meditations?book=4
+	// (and the home-page quote citations) land on the right book.
 	let current = $state(1);
 	// Section to scroll to / briefly highlight on a ?section=N deep link.
 	let highlighted = $state(0);
 
 	const clamp = (n: number) => Math.min(books.length, Math.max(1, n));
 
-	onMount(async () => {
+	// Run after navigation (including the initial load) so our scroll happens
+	// AFTER SvelteKit's own scroll-to-top handling, otherwise it gets reset.
+	afterNavigate(async () => {
 		const q = Number(page.url.searchParams.get('book'));
 		if (q) current = clamp(q);
 
 		const sec = Number(page.url.searchParams.get('section'));
-		if (sec) {
-			await tick(); // wait for the book's paragraphs to render
+		if (!sec) return;
+
+		await tick(); // let the selected book's paragraphs render
+		requestAnimationFrame(() => {
 			const el = document.getElementById(`s${sec}`);
-			if (el) {
-				el.scrollIntoView({ block: 'center' });
-				highlighted = sec;
-				setTimeout(() => (highlighted = 0), 2000);
-			}
-		}
+			if (!el) return;
+			el.scrollIntoView({ block: 'center' });
+			highlighted = sec;
+			setTimeout(() => (highlighted = 0), 2000);
+		});
 	});
 
 	const book = $derived(books.find((b) => b.number === current) ?? books[0]);
