@@ -43,7 +43,7 @@
 	<p class="text-gray-600">Combat-tested leadership, in brief.</p>
 </header>
 
-<Purpose>How to act in the world.</Purpose>
+<Purpose>How to win in the world.</Purpose>
 
 <!-- Work selector + navigation -->
 <nav aria-label="Works" class="mb-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-gray-200 py-3">
