@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>Bio</title>
+	<title>Bio — Zachary Basinger</title>
 </svelte:head>
 
 <figure class="mb-10 border-l-2 border-gray-300 pl-4">
