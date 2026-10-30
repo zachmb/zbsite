@@ -63,7 +63,7 @@
 </svelte:head>
 
 <header class="mb-6">
-	<h1 class="mb-1 text-3xl font-bold">Meditations</h1>
+	<h1 class="mb-1 text-3xl font-bold">The Meditations</h1>
 	<p class="text-gray-600">
 		Marcus Aurelius · translated by {data.translator}
 	</p>
