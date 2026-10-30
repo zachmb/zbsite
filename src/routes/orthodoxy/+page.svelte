@@ -18,11 +18,15 @@
 
 	const work = $derived(works[current]);
 
-	async function open(i: number) {
+	// scrollToReader is only used when picking a work from the index list below
+	// (so the updated excerpt comes into view). The Prev/Random/Next buttons sit
+	// at the reader already, so they update in place without scrolling.
+	async function open(i: number, scrollToReader = false) {
 		current = clamp(i);
 		const url = new URL(page.url);
 		url.searchParams.set('work', String(current + 1));
 		replaceState(url, {});
+		if (!scrollToReader) return;
 		await tick();
 		document.getElementById('reader')?.scrollIntoView({ block: 'start' });
 	}
@@ -92,7 +96,7 @@
 			<button
 				type="button"
 				class="text-left {i === current ? 'font-bold text-black' : 'text-[var(--link)] hover:underline'}"
-				onclick={() => open(i)}
+				onclick={() => open(i, true)}
 			>
 				{w.author}: {w.title}
 			</button>
