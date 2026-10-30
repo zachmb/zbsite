@@ -113,9 +113,7 @@
 		<p class="mb-4"><b>{s.n}.</b> {s.text}</p>
 	{/each}
 
-	<p class="mt-4 text-sm">
-		<a href={work.sourceUrl} target="_blank" rel="noopener noreferrer">Read all {work.count} texts at the source →</a>
-	</p>
+	<p class="mt-4 text-sm text-gray-500">Selected from {work.count} texts.</p>
 </article>
 
 <!-- Index, grouped by author -->

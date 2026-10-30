@@ -144,22 +144,119 @@ works = [...byKey.values()];
 // since the collection mixes both forms for the same writer).
 for (const w of works) w.author = w.author.replace(/^(st\.?|saint)\s+/i, '').trim();
 
-// Stable order: by author, then title.
-works.sort((a, b) => a.author.localeCompare(b.author) || a.title.localeCompare(b.title));
+// Order the works as they appear in the Philokalia itself (the volume sequence
+// from the source's table of contents), not alphabetically. Match each work to
+// its slot by prefix (filenames are truncated at 80 chars, so the shorter slug
+// is always a prefix of the longer original).
+const TOC_ORDER = [
+	'isaiah-the-solitary-on-guarding-the-intellect-twenty-seven-texts',
+	'evagrios-the-solitary-outline-teaching-on-asceticism-and-stillness-in-the-solitary-life',
+	'evagrios-the-solitary-texts-on-discrimination-in-respect-of-passions-and-thoughts',
+	'evagrios-the-solitary-extracts-from-the-texts-on-watchfulness',
+	'evagrios-the-solitary-on-prayer-one-hundred-and-fifty-three-texts',
+	'st-john-cassian-on-the-eight-vices',
+	'john-cassian-on-the-holy-fathers-of-sketis-and-discrimination',
+	'mark-the-ascetic-on-the-spiritual-law-two-hundred-texts',
+	'mark-the-ascetic-on-those-who-think-they-are-made-righteous-by-works-two-hundred-and-twenty-six-texts',
+	'mark-the-ascetic-letter-to-nicholas-the-solitary',
+	'st-hesychios-the-priest-on-watchfulness-and-holiness',
+	'st-neilos-the-ascetic-the-ascetic-discourse',
+	'diadochos-of-pontiki-definitions',
+	'diadochos-of-pontiki-on-spiritual-knowledge-and-discrimination-one-hundred-texts',
+	'john-of-karpathos-for-the-encouragement-of-monks-in-india-who-had-written-him-one-hundred-texts',
+	'john-of-karpathos-ascetic-discourse-sent-at-the-request-of-the-same-monks-in-india',
+	'anthony-the-great-on-the-character-of-men-and-on-the-virtuous-life-one-hundred-a',
+	'theodoros-the-great-ascetic-a-century-of-spiritual-texts',
+	'theodoros-the-great-ascetic-theoretikon',
+	'st-maximos-the-confessor-four-hundred-texts-on-love',
+	'maximus-the-confessor-two-hundred-texts-on-theology-and-the-incarnate-dispensation-of-the-son-of-god',
+	'maximus-the-confessor-various-texts-on-theology-the-divine-economy-and-virtue-and-vice',
+	'maximus-confessor-on-the-lord-s-prayer-a-short-interpretation-addressed-to-a-dev',
+	'thalassios-the-libyan-on-love-self-control-and-life-in-accordance-with-the-intellect',
+	'john-of-damaskos-on-the-virtues-and-the-vices',
+	'abba-philimon-a-discourse-on-abba-philimon',
+	'theognostos-on-the-practice-of-the-virtues-contemplation-and-the-priesthood',
+	'philotheos-of-sinai-forty-texts-on-watchfulness',
+	'ilias-the-presbyter-a-gnomic-anthology',
+	'theophanis-the-monk-the-ladder-of-divine-graces',
+	'st-peter-of-damaskos-book-i-a-treasury-of-divine-knowledge',
+	'st-symeon-metaphrastis-paraphrase-of-the-homilies-of-st-makarios-of-egypt-i-spir',
+	'st-symeon-metaphrastis-paraphrase-of-the-homilies-of-st-makarios-of-egypt-ii-pra',
+	'st-symeon-metaphrastis-paraphrase-of-the-homilies-of-st-makarios-of-egypt-iii-pa',
+	'st-symeon-metaphrastis-paraphrase-of-the-homilies-of-st-makarios-of-egypt-iv-the-raising-of-the-intellect',
+	'st-symeon-metaphrastis-paraphrase-of-the-homilies-of-st-makarios-of-egypt-v-love',
+	'st-symeon-metaphrastis-paraphrase-of-the-homilies-of-st-makarios-of-egypt-vi-the',
+	'symeon-the-new-theologian-on-faith',
+	'symeon-the-new-theologian-one-hundred-and-fifty-three-practical-and-theological-texts',
+	'symeon-the-new-theologian-the-three-methods-of-prayer',
+	'nikitas-stithatos-on-the-practice-of-the-virtues-one-hundred-texts',
+	'nikitas-stithatos-on-the-inner-nature-of-things-and-the-purification-of-the-intellect-one-hundred-texts',
+	'nikitas-stithatos-on-spiritual-knowledge-love-and-the-perfection-of-living-one-hundred-texts',
+	'theoliptos-metropolitan-of-philadelphia-on-inner-work-in-christ-and-the-monastic-profession',
+	'theoliptos-metropolitan-of-philadelphia-texts',
+	'nikiphoros-the-monk-on-watchfulness-and-the-guarding-of-the-heart',
+	'nikiphoros-the-monk-from-the-life-of-our-holy-father-antony',
+	'st-gregory-of-sinai-on-commandments-and-doctrines-warnings-and-promises-on-thoughts-passions-and-virtues-and-also-on-stillness-and-prayer-one-hundred-and-thirty-seven-texts',
+	'gregory-of-sinai-further-texts',
+	'st-gregory-of-sinai-on-the-signs-of-grace-and-delusion-written-for-the-confessor',
+	'gregory-of-sinai-fifteen-texts-h2',
+	'st-gregory-of-sinai-on-prayer-seven-texts',
+	'gregory-of-sinai-on-stillness-fifteen-texts',
+	'st-gregory-palamas-to-the-most-reverend-nun-xenia',
+	'gregory-palamas-a-new-testament-decalogue',
+	'st-gregory-palamas-in-defense-of-those-who-devoutly-practice-a-life-of-stillness',
+	'st-gregory-palamas-three-texts-on-prayer-and-purity-of-heart',
+	'st-gregory-palamas-topics-of-natural-and-theological-science-and-on-the-moral-an',
+	'gregory-palamas-the-declaration-of-the-holy-mountain-in-defense-of-those-who-dev'
+].map((s) => s.replace(/^st-/, ''));
+const rankOf = (id) => {
+	const b = id.replace(/^st-/, '');
+	const i = TOC_ORDER.findIndex((a) => a.startsWith(b) || b.startsWith(a));
+	return i === -1 ? TOC_ORDER.length : i;
+};
+works.sort((a, b) => rankOf(a.id) - rankOf(b.id));
 
-// Emit a small, embeddable index with a short opening excerpt + source link.
+// Emit a small, embeddable index with the most quotable short excerpts.
 const cap = (s) => (s.length > EXCERPT_CHARS ? s.slice(0, EXCERPT_CHARS).replace(/\s+\S*$/, '') + '…' : s);
+
+// Score each text so the shown excerpts are the self-contained, aphoristic ones
+// (complete, substantial-but-short, not citation-heavy, not mid-argument).
+function bestExcerpts(sections, howMany) {
+	const scored = sections.map((s) => {
+		const first = s.text.split('\n\n')[0].trim();
+		const len = first.length;
+		let score = 0;
+		if (len >= 70 && len <= EXCERPT_CHARS) score += 40; // complete and shows in full
+		if (len > EXCERPT_CHARS) score -= Math.min(30, (len - EXCERPT_CHARS) / 12); // would be cut
+		if (len < 50) score -= 25; // fragment
+		if (/[.!?]["'’”]?$/.test(first)) score += 10; // ends a sentence
+		if (/\b(is|are)\b/.test(first.slice(0, 70))) score += 8; // definitional
+		if (/^(The|A |He who|Do not|When|Nothing|Prayer|Love|Faith|Humility|Virtue|Stillness|Watchfulness)/.test(first)) score += 8;
+		if (/\(cf\.|\d+ ?: ?\d+|\b(Gen|Exod|Lev|Ps|Prov|Isa|Matt|Mark|Luke|John|Acts|Rom|Cor|Gal|Eph|Phil|Col|Tim|Heb)\b/.test(first)) score -= 12; // citation-heavy
+		if (/^(For|But|Thus|Therefore|And|So|Hence|Then|Again|Moreover|Now)\b/.test(first)) score -= 8; // mid-argument
+		return { n: s.n, text: first, score };
+	});
+	scored.sort((a, b) => b.score - a.score || a.n - b.n);
+	return scored
+		.slice(0, howMany)
+		.sort((a, b) => a.n - b.n)
+		.map((c) => ({ n: c.n, text: cap(c.text) }));
+}
+
 const index = {
 	title: 'The Philokalia',
-	note: 'Excerpts shown for study; the modern English translation is under copyright. Follow the link to read each work in full.',
-	works: works.map((w) => ({
-		id: w.id,
-		author: w.author,
-		title: w.title,
-		count: w.sections.length,
-		sourceUrl: `${SOURCE_BASE}/${w.id}.html`,
-		excerpt: w.sections.slice(0, EXCERPT_TEXTS).map((s) => ({ n: s.n, text: cap(s.text.split('\n\n')[0]) }))
-	}))
+	note: 'Selected excerpts from each work, in the order they appear in the Philokalia. Only short passages are shown; the full modern English translation is under copyright.',
+	works: works.map((w) => {
+		// Show fewer excerpts for shorter works (keep it a modest fraction).
+		const howMany = w.sections.length >= 40 ? EXCERPT_TEXTS + 1 : w.sections.length >= 12 ? EXCERPT_TEXTS : 1;
+		return {
+			id: w.id,
+			author: w.author,
+			title: w.title,
+			count: w.sections.length,
+			excerpt: bestExcerpts(w.sections, howMany)
+		};
+	})
 };
 await writeFile(outPath, JSON.stringify(index, null, '\t') + '\n', 'utf8');
 
