@@ -2,6 +2,7 @@
 	import { tick } from 'svelte';
 	import { page } from '$app/state';
 	import { replaceState, afterNavigate } from '$app/navigation';
+	import Purpose from '$lib/Purpose.svelte';
 	import data from '$lib/meditations.json';
 
 	const books = data.books;
@@ -80,6 +81,8 @@
 		Marcus Aurelius · translated by {data.translator}
 	</p>
 </header>
+
+<Purpose>How to process the world.</Purpose>
 
 <!-- Book selector + navigation -->
 <nav aria-label="Books" class="mb-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-gray-200 py-3">

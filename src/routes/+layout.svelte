@@ -10,7 +10,9 @@
 		{ label: 'Bio', href: '/' },
 		{ label: 'Repos', href: '/repos' },
 		{ label: 'Essays', href: '/essays' },
-		{ label: 'Meditations', href: '/meditations' }
+		{ label: 'Tactics', href: '/tactics' },
+		{ label: 'Meditations', href: '/meditations' },
+		{ label: 'Orthodoxy', href: '/orthodoxy' }
 	];
 
 	const isActive = (href: string) =>
