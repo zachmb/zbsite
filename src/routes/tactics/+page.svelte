@@ -40,7 +40,7 @@
 
 <header class="mb-2">
 	<h1 class="mb-1 text-3xl font-bold">Tactics</h1>
-	<p class="text-gray-600">Combat-tested leadership, in brief.</p>
+	<p class="text-[#111]">Combat-tested leadership, in brief.</p>
 </header>
 
 <Purpose>How to win in the world.</Purpose>
@@ -85,7 +85,7 @@
 
 <article>
 	<h2 class="mb-1 text-2xl font-bold">{work.title}</h2>
-	<p class="mb-5 text-gray-500 italic">{work.author}</p>
+	<p class="mb-5 text-[#111] italic">{work.author}</p>
 
 	{#each work.sections as s}
 		<p class="mb-4"><b>{s.n}.</b> {s.text}</p>
@@ -96,6 +96,6 @@
 	</p>
 </article>
 
-<p class="mt-10 text-xs text-gray-400">
+<p class="mt-10 text-xs text-[#111]">
 	Original summaries of the ideas. Read the books (Jocko Willink & Leif Babin) and the SEAL ethos for the real material.
 </p>

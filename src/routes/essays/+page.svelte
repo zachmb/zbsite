@@ -7,6 +7,6 @@
 <ul class="list-disc space-y-2 pl-6">
 	<li>
 		You're not an entrepreneur if you ChatGPT'd a website
-		<span class="italic text-gray-500">(in progress)</span>
+		<span class="italic text-[#111]">(in progress)</span>
 	</li>
 </ul>

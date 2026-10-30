@@ -77,7 +77,7 @@
 
 <header class="mb-6">
 	<h1 class="mb-1 text-3xl font-bold">The Meditations</h1>
-	<p class="text-gray-600">
+	<p class="text-[#111]">
 		Marcus Aurelius · translated by {data.translator}
 	</p>
 </header>
@@ -129,7 +129,7 @@
 <article>
 	<h2 class="mb-1 text-2xl font-bold">{book.title}</h2>
 	{#if book.dateline}
-		<p class="mb-5 text-gray-500 italic">{book.dateline}.</p>
+		<p class="mb-5 text-[#111] italic">{book.dateline}.</p>
 	{:else}
 		<div class="mb-5"></div>
 	{/if}
@@ -146,7 +146,7 @@
 	{/each}
 </article>
 
-<p class="mt-10 text-xs text-gray-400">
+<p class="mt-10 text-xs text-[#111]">
 	Text: George Long translation, via
 	<a href="https://classics.mit.edu/Antoninus/meditations.html" target="_blank" rel="noopener noreferrer"
 		>The Internet Classics Archive</a

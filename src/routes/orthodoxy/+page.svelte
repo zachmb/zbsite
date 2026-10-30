@@ -57,13 +57,13 @@
 
 <header class="mb-2">
 	<h1 class="mb-1 text-3xl font-bold">Orthodoxy</h1>
-	<p class="text-gray-600">The Philokalia and the living tradition of Mount Athos.</p>
+	<p class="text-[#111]">The Philokalia and the living tradition of Mount Athos.</p>
 </header>
 
 <Purpose>How to transcend the world.</Purpose>
 
 <h2 class="mb-1 text-2xl font-bold">The Philokalia</h2>
-<p class="mb-5 text-sm text-gray-500">{philokalia.note}</p>
+<p class="mb-5 text-sm text-[#111]">{philokalia.note}</p>
 
 <!-- Work selector (numbered) + navigation -->
 <nav aria-label="Works" class="mb-6 flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-gray-200 py-3">
@@ -107,13 +107,13 @@
 <!-- Selected work excerpt -->
 <article id="reader">
 	<h3 class="text-xl font-bold">{work.title}</h3>
-	<p class="mb-4 text-gray-500 italic">{work.author} · {work.count} texts · {current + 1} of {works.length}</p>
+	<p class="mb-4 text-[#111] italic">{work.author} · {work.count} texts · {current + 1} of {works.length}</p>
 
 	{#each work.excerpt as s}
 		<p class="mb-4"><b>{s.n}.</b> {s.text}</p>
 	{/each}
 
-	<p class="mt-4 text-sm text-gray-500">Selected from {work.count} texts.</p>
+	<p class="mt-4 text-sm text-[#111]">Selected from {work.count} texts.</p>
 </article>
 
 <!-- Index, grouped by author -->
@@ -132,7 +132,7 @@
 						>
 							{it.i + 1}. {it.title}
 						</button>
-						<span class="text-sm text-gray-400">· {it.count}</span>
+						<span class="text-sm text-[#111]">· {it.count}</span>
 					</li>
 				{/each}
 			</ul>
@@ -142,19 +142,19 @@
 
 <!-- Pemptousia articles -->
 <h2 class="mt-12 mb-1 text-2xl font-bold">From Pemptousia</h2>
-<p class="mb-5 text-sm text-gray-500">Recent writing on Orthodox theology and spiritual life.</p>
+<p class="mb-5 text-sm text-[#111]">Recent writing on Orthodox theology and spiritual life.</p>
 
 <ul class="list-none space-y-4">
 	{#each pemptousia.articles as a}
 		<li>
 			<a href={a.link} target="_blank" rel="noopener noreferrer" class="font-bold">{a.title}</a>
-			<div class="text-xs text-gray-500">{a.date}{a.category ? ` · ${a.category}` : ''}</div>
-			{#if a.excerpt}<p class="mt-1 text-sm text-gray-700">{a.excerpt}</p>{/if}
+			<div class="text-xs text-[#111]">{a.date}{a.category ? ` · ${a.category}` : ''}</div>
+			{#if a.excerpt}<p class="mt-1 text-sm text-[#111]">{a.excerpt}</p>{/if}
 		</li>
 	{/each}
 </ul>
 
-<p class="mt-10 text-xs text-gray-400">
+<p class="mt-10 text-xs text-[#111]">
 	Philokalia excerpts via
 	<a href="https://orthodoxchurchfathers.com/fathers/philokalia" target="_blank" rel="noopener noreferrer">orthodoxchurchfathers.com</a>.
 	Articles via <a href="https://pemptousia.com" target="_blank" rel="noopener noreferrer">pemptousia.com</a>.

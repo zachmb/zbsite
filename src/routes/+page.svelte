@@ -15,10 +15,10 @@
 </svelte:head>
 
 <figure class="mb-10 border-l-2 border-gray-300 pl-4">
-	<blockquote class="text-gray-700 italic">
+	<blockquote class="text-[#111] italic">
 		&ldquo;{quote.text}&rdquo;
 	</blockquote>
-	<figcaption class="mt-2 text-sm text-gray-500 not-italic">
+	<figcaption class="mt-2 text-sm text-[#111] not-italic">
 		Marcus Aurelius,
 		<a href="/meditations?book={quote.book}&section={quote.section}"
 			>Meditations {quote.book}.{quote.section}</a
