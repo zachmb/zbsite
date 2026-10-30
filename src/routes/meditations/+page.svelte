@@ -48,8 +48,8 @@
 	</p>
 </header>
 
-<!-- Book selector -->
-<nav aria-label="Books" class="mb-8 border-y border-gray-200 py-3">
+<!-- Book selector + navigation -->
+<nav aria-label="Books" class="mb-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-y border-gray-200 py-3">
 	<ol class="flex flex-wrap gap-x-3 gap-y-2">
 		{#each books as b}
 			<li>
@@ -66,6 +66,28 @@
 			</li>
 		{/each}
 	</ol>
+
+	<div class="flex flex-wrap items-center gap-3">
+		<button
+			type="button"
+			class="border border-gray-400 px-3 py-1 font-bold disabled:cursor-not-allowed disabled:opacity-40"
+			disabled={current === 1}
+			onclick={() => open(current - 1)}
+		>
+			← Previous
+		</button>
+		<button type="button" class="border border-gray-400 px-3 py-1 font-bold" onclick={backToList}>
+			Back to list
+		</button>
+		<button
+			type="button"
+			class="border border-gray-400 px-3 py-1 font-bold disabled:cursor-not-allowed disabled:opacity-40"
+			disabled={current === books.length}
+			onclick={() => open(current + 1)}
+		>
+			Next →
+		</button>
+	</div>
 </nav>
 
 <article>
@@ -80,33 +102,6 @@
 		<p class="mb-4"><b>{s.n}.</b> {s.text}</p>
 	{/each}
 </article>
-
-<!-- Prev / back-to-list / next -->
-<nav class="mt-10 flex flex-wrap items-center gap-3 border-t border-gray-200 pt-4">
-	<button
-		type="button"
-		class="border border-gray-400 px-3 py-1 font-bold disabled:opacity-40 disabled:cursor-not-allowed"
-		disabled={current === 1}
-		onclick={() => open(current - 1)}
-	>
-		← Previous
-	</button>
-	<button
-		type="button"
-		class="border border-gray-400 px-3 py-1 font-bold"
-		onclick={backToList}
-	>
-		Back to list
-	</button>
-	<button
-		type="button"
-		class="border border-gray-400 px-3 py-1 font-bold disabled:opacity-40 disabled:cursor-not-allowed"
-		disabled={current === books.length}
-		onclick={() => open(current + 1)}
-	>
-		Next →
-	</button>
-</nav>
 
 <p class="mt-10 text-xs text-gray-400">
 	Text: George Long translation, via
