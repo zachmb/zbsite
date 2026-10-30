@@ -55,5 +55,4 @@
 		<a href="https://github.com/zachmb" target="_blank" rel="noopener noreferrer">zachmb</a> on GitHub. Click on <a href="/repos">repos</a> to see my public repos pulled from GitHub right here, though.
 	</li>
 	<li>My email: <a href="mailto:zmb3@illinois.edu">zmb3@illinois.edu</a></li>
-	<li>My phone number (text before calling): +1 (773) 332-8813</li>
 </ul>
