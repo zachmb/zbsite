@@ -8,6 +8,7 @@
 
 	const nav = [
 		{ label: 'Bio', href: '/' },
+		{ label: 'Daily', href: '/daily' },
 		{ label: 'Repos', href: '/repos' },
 		{ label: 'Essays', href: '/essays' },
 		{ label: 'Tactics', href: '/tactics' },
