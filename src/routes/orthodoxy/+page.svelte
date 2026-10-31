@@ -5,9 +5,23 @@
 	import Purpose from '$lib/Purpose.svelte';
 	import philokalia from '$lib/philokalia.json';
 	import pemptousia from '$lib/pemptousia.json';
+	import editorial from '$lib/philokalia-editorial.json';
 
 	const works = philokalia.works;
 	let current = $state(0);
+
+	type Bio = { text: string; url: string };
+	const bioFor = (author: string): Bio =>
+		(editorial.authors as Record<string, Bio>)[author] ?? { text: '', url: '' };
+
+	// Theme groupings (resolved to work indices) for "Browse by theme".
+	const themeGroups = editorial.themes.map((t) => ({
+		name: t.name,
+		items: t.workIds
+			.map((id) => works.findIndex((w) => w.id === id))
+			.filter((i) => i >= 0)
+			.map((i) => ({ i, title: works[i].title, author: works[i].author }))
+	}));
 
 	const clamp = (n: number) => Math.min(works.length - 1, Math.max(0, n));
 
@@ -78,6 +92,15 @@
 <Purpose>How to transcend the world.</Purpose>
 
 <h2 class="mb-1 text-2xl font-bold">The Philokalia</h2>
+<p class="mb-3">
+	{editorial.philokaliaIntro.text}
+	{#if editorial.philokaliaIntro.url}<a
+			href={editorial.philokaliaIntro.url}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="text-sm whitespace-nowrap">More ↗</a
+		>{/if}
+</p>
 <p class="mb-5 text-sm text-[#111]">{philokalia.note}</p>
 
 <!-- A random passage from across the Philokalia -->
@@ -141,7 +164,19 @@
 <!-- Selected work excerpt -->
 <article id="reader">
 	<h3 class="text-xl font-bold">{work.title}</h3>
-	<p class="mb-4 text-[#111] italic">{work.author} · {work.count} texts · {current + 1} of {works.length}</p>
+	<p class="mb-2 text-[#111] italic">{work.author} · {work.count} texts · {current + 1} of {works.length}</p>
+
+	{#if bioFor(work.author).text}
+		<p class="mb-4 text-sm text-[#111]">
+			{bioFor(work.author).text}
+			{#if bioFor(work.author).url}<a
+					href={bioFor(work.author).url}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="whitespace-nowrap">Wikipedia ↗</a
+				>{/if}
+		</p>
+	{/if}
 
 	{#each work.excerpt as s}
 		<p class="mb-4"><b>{s.n}.</b> {s.text}</p>
@@ -156,6 +191,17 @@
 	{#each groups as g}
 		<div>
 			<div class="font-bold">{g.author}</div>
+			{#if bioFor(g.author).text}
+				<p class="mb-1 text-sm text-[#111]">
+					{bioFor(g.author).text}
+					{#if bioFor(g.author).url}<a
+							href={bioFor(g.author).url}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="whitespace-nowrap">Wikipedia ↗</a
+						>{/if}
+				</p>
+			{/if}
 			<ul class="list-none space-y-1 pl-4">
 				{#each g.items as it}
 					<li>
@@ -167,6 +213,32 @@
 							{it.i + 1}. {it.title}
 						</button>
 						<span class="text-sm text-[#111]">· {it.count}</span>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	{/each}
+</div>
+
+<!-- Index, grouped by theme -->
+<h3 class="mt-10 mb-3 text-lg font-bold">Browse by theme</h3>
+<div class="mb-4 space-y-4">
+	{#each themeGroups as t}
+		<div>
+			<div class="font-bold">{t.name}</div>
+			<ul class="list-none space-y-1 pl-4">
+				{#each t.items as it}
+					<li>
+						<button
+							type="button"
+							class="text-left {it.i === current
+								? 'font-bold text-black'
+								: 'text-[var(--link)] hover:underline'}"
+							onclick={() => open(it.i, true)}
+						>
+							{it.title}
+						</button>
+						<span class="text-sm text-[#111]">· {it.author}</span>
 					</li>
 				{/each}
 			</ul>
@@ -192,4 +264,7 @@
 	Philokalia excerpts via
 	<a href="https://orthodoxchurchfathers.com/fathers/philokalia" target="_blank" rel="noopener noreferrer">orthodoxchurchfathers.com</a>.
 	Articles via <a href="https://pemptousia.com" target="_blank" rel="noopener noreferrer">pemptousia.com</a>.
+	Overview and author notes from
+	<a href="https://en.wikipedia.org/wiki/Philokalia" target="_blank" rel="noopener noreferrer">Wikipedia</a>
+	(CC BY-SA).
 </p>
