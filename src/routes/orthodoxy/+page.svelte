@@ -22,10 +22,25 @@
 		g.items.push({ title: w.title, count: w.count, i });
 	});
 
+	// Pool of all the short excerpts, for the "random quote" feature.
+	const quotePool = works.flatMap((w, i) =>
+		w.excerpt.map((e) => ({ text: e.text, n: e.n, author: w.author, title: w.title, i }))
+	);
+	let quote = $state(quotePool[0]);
+
 	onMount(() => {
 		const q = Number(page.url.searchParams.get('work'));
 		if (q) current = clamp(q - 1);
+		randomQuote(); // show a fresh passage on load
 	});
+
+	// Surface a different random passage from across the Philokalia.
+	function randomQuote() {
+		if (quotePool.length < 2) return;
+		let q = quote;
+		while (q === quote) q = quotePool[Math.floor(Math.random() * quotePool.length)];
+		quote = q;
+	}
 
 	const work = $derived(works[current]);
 
@@ -64,6 +79,25 @@
 
 <h2 class="mb-1 text-2xl font-bold">The Philokalia</h2>
 <p class="mb-5 text-sm text-[#111]">{philokalia.note}</p>
+
+<!-- A random passage from across the Philokalia -->
+<figure class="mb-8 border-l-2 border-gray-300 pl-4">
+	<blockquote class="text-[#111] italic">&ldquo;{quote.text}&rdquo;</blockquote>
+	<figcaption class="mt-2 text-sm text-[#111] not-italic">
+		<button
+			type="button"
+			class="text-left text-[var(--link)] hover:underline"
+			onclick={() => open(quote.i, true)}>{quote.author}, {quote.title}</button
+		>
+		<button
+			type="button"
+			onclick={randomQuote}
+			class="ml-1 text-[var(--link)] hover:underline"
+			aria-label="Another random passage"
+			title="Another passage">↻</button
+		>
+	</figcaption>
+</figure>
 
 <!-- Work selector (numbered) + navigation -->
 <nav aria-label="Works" class="mb-6 flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-gray-200 py-3">
